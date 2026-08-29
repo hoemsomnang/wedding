@@ -51,11 +51,13 @@ defineProps({
   object-fit: contain;
   pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(10, 35, 80, 0.4));
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 /* Flip container horizontally so the bird's head and beak point forward into the flight direction */
 .lottie-bird-wrapper.flip-forward {
-  transform: scaleX(-1);
+  transform: scaleX(-1) translate3d(0, 0, 0);
   transform-origin: center center;
 }
 </style>
