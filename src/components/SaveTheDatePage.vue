@@ -11,7 +11,18 @@
         <div class="page-lighting-overlay"></div>
       </div>
 
-      <!-- Particle Effects Layer -->
+      <!-- Twinkling Fairy Light Bulbs across Arch Curtain -->
+      <div class="fairy-lights-garland" aria-hidden="true">
+        <div v-for="i in 16" :key="'fairy-light-' + i" :class="'fairy-light-bulb bulb-' + i"></div>
+      </div>
+
+      <!-- Warm Golden Lantern Glows at bottom walkway -->
+      <div class="lantern-glows-layer" aria-hidden="true">
+        <div class="lantern-glow-point lantern-left"></div>
+        <div class="lantern-glow-point lantern-right"></div>
+      </div>
+
+      <!-- Particle Effects Layer (Petals, Butterflies, Sparkles) -->
       <ParticleEffects />
 
       <!-- Flying Vector Bluebirds Layer (Scalable Vector SVG) -->
@@ -19,34 +30,94 @@
 
       <!-- Main Typography & Content -->
       <div class="page-content">
-        <!-- Top Spacer to align names in clear sky -->
+        <!-- Top Spacer -->
         <div class="top-spacer"></div>
 
-        <!-- Couple Calligraphy Names in Khmer -->
-        <div class="names-calligraphy-section">
-          <div class="name-mark-wrapper">
-            <span class="calligraphy-name name-mark">សំណាង</span>
-          </div>
-          
-          <div class="ampersand-wrapper">
-            <span class="calligraphy-ampersand">&</span>
+        <!-- Glassmorphic Royal Crest Container -->
+        <div class="royal-names-card">
+          <!-- Monogram Crown Emblem -->
+          <div class="crown-emblem">
+            <svg viewBox="0 0 60 24" width="48" height="20" fill="none">
+              <path d="M5 20 L15 6 L30 16 L45 6 L55 20 Z" fill="url(#goldCrownGrad)" stroke="#d4af37" stroke-width="1"/>
+              <circle cx="15" cy="5" r="2.5" fill="#fef08a" />
+              <circle cx="30" cy="14" r="2.5" fill="#fef08a" />
+              <circle cx="45" cy="5" r="2.5" fill="#fef08a" />
+              <defs>
+                <linearGradient id="goldCrownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fef08a" />
+                  <stop offset="50%" stop-color="#d4af37" />
+                  <stop offset="100%" stop-color="#996515" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
 
-          <div class="name-thida-wrapper">
-            <span class="calligraphy-name name-thida">សារ៉េន</span>
+          <!-- Couple Calligraphy Names in Authentic Khmer -->
+          <div class="names-calligraphy-section">
+            <div class="name-mark-wrapper">
+              <span class="calligraphy-name name-mark">សំណាង</span>
+            </div>
+            
+            <div class="ampersand-divider-wrapper">
+              <span class="gold-filigree-line left-line"></span>
+              <span class="calligraphy-ampersand">&</span>
+              <span class="gold-filigree-line right-line"></span>
+            </div>
+
+            <div class="name-thida-wrapper">
+              <span class="calligraphy-name name-thida">សារ៉េន</span>
+            </div>
+          </div>
+
+          <!-- Ornate Gold Divider -->
+          <div class="ornate-gold-divider">
+            <span class="divider-diamond">❖</span>
+            <span class="divider-line"></span>
+            <span class="divider-crown">❦</span>
+            <span class="divider-line"></span>
+            <span class="divider-diamond">❖</span>
+          </div>
+
+          <!-- Save The Date Subtitle in Khmer -->
+          <div class="date-section">
+            <h2 class="save-the-date-title">ថ្ងៃសិរីមង្គលអាពាហ៍ពិពាហ៍</h2>
+            
+            <!-- Luxury Date Pill Badge -->
+            <div class="wedding-date-badge">
+              <div class="badge-shine"></div>
+              <span class="date-khmer-text">ថ្ងៃសៅរ៍ ទី១៣ ខែមីនា ឆ្នាំ២០២៧</span>
+              <span class="date-sub-en">13 . 03 . 2027</span>
+            </div>
+          </div>
+
+          <!-- Live Wedding Countdown Timer -->
+          <div class="countdown-container">
+            <div class="countdown-item">
+              <span class="countdown-num">{{ countdown.days }}</span>
+              <span class="countdown-label">ថ្ងៃ (Days)</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-item">
+              <span class="countdown-num">{{ countdown.hours }}</span>
+              <span class="countdown-label">ម៉ោង (Hours)</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-item">
+              <span class="countdown-num">{{ countdown.minutes }}</span>
+              <span class="countdown-label">នាទី (Mins)</span>
+            </div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-item">
+              <span class="countdown-num">{{ countdown.seconds }}</span>
+              <span class="countdown-label">វិនាទី (Secs)</span>
+            </div>
           </div>
         </div>
 
-        <!-- Save The Date Subtitle & Date in Khmer -->
-        <div class="date-section">
-          <h2 class="save-the-date-title">ថ្ងៃសិរីមង្គលអាពាហ៍ពិពាហ៍</h2>
-          <p class="wedding-date-text">១៣ មីនា ២០២៧</p>
-        </div>
-
-        <!-- Center / Bottom Gazebo View Area -->
+        <!-- Altar Spacer -->
         <div class="altar-spacer"></div>
 
-        <!-- Bottom Action Bar / Audio Controls matching sambot.online bar -->
+        <!-- Bottom Action Bar / Audio Controls -->
         <div class="bottom-action-bar">
           <button
             class="back-btn"
@@ -78,7 +149,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ParticleEffects from './ParticleEffects.vue'
 import BirdFlockEffect from './BirdFlockEffect.vue'
 import altarBgUrl from '../assets/wedding_altar_bg.jpg'
@@ -88,9 +159,40 @@ const emit = defineEmits(['back-to-cover'])
 const isPlaying = ref(false)
 let audio = null
 
+// Live Countdown Timer to 13 March 2027
+const targetDate = new Date('2027-03-13T09:00:00')
+const countdown = ref({ days: '000', hours: '00', minutes: '00', seconds: '00' })
+let timer = null
+
+function updateCountdown() {
+  const now = new Date()
+  const diff = targetDate - now
+  if (diff > 0) {
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+    countdown.value = {
+      days: String(days).padStart(3, '0'),
+      hours: String(hours).padStart(2, '0'),
+      minutes: String(minutes).padStart(2, '0'),
+      seconds: String(seconds).padStart(2, '0')
+    }
+  }
+}
+
+onMounted(() => {
+  updateCountdown()
+  timer = setInterval(updateCountdown, 1000)
+})
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer)
+})
+
 function toggleMusic() {
   if (!audio) {
-    // Romantic ambient acoustic guitar / traditional soft wedding harp melody
     audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-wedding-dream-150.mp3')
     audio.loop = true
   }
@@ -106,7 +208,12 @@ function toggleMusic() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+$gold-primary: #d4af37;
+$gold-light: #fef08a;
+$sapphire-dark: #071a3d;
+$sapphire-primary: #1d4ed8;
+
 .save-the-date-container {
   width: 100vw;
   height: 100vh;
@@ -151,15 +258,98 @@ function toggleMusic() {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse at 50% 30%,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(240, 249, 255, 0.15) 55%,
-    rgba(15, 23, 42, 0.1) 100%
+    ellipse at 50% 25%,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(240, 249, 255, 0.1) 50%,
+    rgba(15, 23, 42, 0.15) 100%
   );
   pointer-events: none;
 }
 
-/* Main Content */
+/* Twinkling Fairy Lights Garland across Arch */
+.fairy-lights-garland {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.fairy-light-bulb {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 20%, #fef08a 60%, rgba(212, 175, 55, 0) 100%);
+  box-shadow: 0 0 10px 3px rgba(254, 240, 138, 0.8), 0 0 20px 6px rgba(254, 240, 138, 0.4);
+  animation: fairyLightTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@for $i from 1 through 16 {
+  .bulb-#{$i} {
+    left: #{($i * 5.8) + 2}%;
+    top: #{sin($i * 0.4) * 22 + 25}px;
+    animation-delay: #{($i * 0.18)}s;
+    animation-duration: #{2.0 + ($i % 3) * 0.5}s;
+  }
+}
+
+@keyframes fairyLightTwinkle {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* Lantern Glow Points on Aisle Walkway */
+.lantern-glows-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.lantern-glow-point {
+  position: absolute;
+  bottom: 30px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.6) 0%, rgba(212, 175, 55, 0.25) 45%, transparent 75%);
+  filter: blur(12px);
+  animation: lanternFlicker 3.2s ease-in-out infinite alternate;
+}
+
+.lantern-left {
+  left: 12%;
+}
+
+.lantern-right {
+  right: 12%;
+  animation-delay: 1.2s;
+}
+
+@keyframes lanternFlicker {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Main Content Layout */
 .page-content {
   position: relative;
   z-index: 20;
@@ -168,107 +358,256 @@ function toggleMusic() {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 2vh 20px 2.5vh 20px;
+  padding: 1.5vh 16px 2vh 16px;
   text-align: center;
   box-sizing: border-box;
 }
 
 .top-spacer {
-  height: 12vh;
-  min-height: 70px;
+  height: 4vh;
+  min-height: 25px;
+}
+
+/* Glassmorphic Royal Names Container */
+.royal-names-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  padding: 18px 16px 14px 16px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.82) 0%, rgba(240, 249, 255, 0.65) 60%, rgba(224, 242, 254, 0.4) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 15px 35px -8px rgba(14, 43, 92, 0.18),
+    0 0 0 1px rgba(212, 175, 55, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: cardFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.crown-emblem {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.4));
+  animation: floatCrown 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatCrown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
 }
 
 /* Calligraphy Names Section */
 .names-calligraphy-section {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
-}
-
-.name-mark-wrapper {
-  position: relative;
-  transform: translateX(-22px);
-  animation: calligraphyRevealTop 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.name-thida-wrapper {
-  position: relative;
-  transform: translateX(25px) translateY(-14px);
-  animation: calligraphyRevealBottom 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.ampersand-wrapper {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  animation: ampersandSpin 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin: 4px 0 8px 0;
+  flex-wrap: wrap;
 }
 
 .calligraphy-name {
   font-family: var(--font-moul), 'Kantumruy Pro', serif;
-  font-size: 2.35rem;
+  font-size: 2.25rem;
   font-weight: 400;
   line-height: 1.35;
-  color: #0b2559;
+  color: #071a3d;
   background: linear-gradient(180deg, #071a3d 0%, #0e306e 40%, #1d4ed8 75%, #0b2559 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: 
     drop-shadow(0 1px 0 #ffffff)
-    drop-shadow(0 -0.8px 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0.8px 0 0 rgba(255, 255, 255, 0.8))
-    drop-shadow(-0.8px 0 0 rgba(255, 255, 255, 0.8))
-    drop-shadow(0 4px 14px rgba(11, 37, 89, 0.4));
+    drop-shadow(0 -0.8px 0 rgba(255, 255, 255, 0.95))
+    drop-shadow(0.8px 0 0 rgba(255, 255, 255, 0.9))
+    drop-shadow(-0.8px 0 0 rgba(255, 255, 255, 0.9))
+    drop-shadow(0 4px 12px rgba(11, 37, 89, 0.35));
   display: inline-block;
   letter-spacing: 0.5px;
-  position: relative;
+
+  @media (max-width: 420px) {
+    font-size: 1.85rem;
+  }
+}
+
+.ampersand-divider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gold-filigree-line {
+  width: 16px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #d4af37, #fef08a);
+
+  &.right-line {
+    background: linear-gradient(90deg, #fef08a, #d4af37, transparent);
+  }
 }
 
 .calligraphy-ampersand {
   font-family: 'Cinzel', 'Playfair Display', serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  color: #1e3a8a;
-  filter: drop-shadow(0 2px 5px rgba(255, 255, 255, 0.9));
-  opacity: 0.9;
+  color: #d4af37;
+  background: linear-gradient(180deg, #fef08a 0%, #d4af37 60%, #996515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1.5px 3px rgba(153, 101, 21, 0.35));
 }
 
-/* Save the Date Section */
+/* Ornate Gold Divider */
+.ornate-gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0 8px 0;
+  color: #d4af37;
+  font-size: 0.75rem;
+
+  .divider-line {
+    width: 45px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
+  }
+
+  .divider-diamond {
+    font-size: 0.75rem;
+    color: #d4af37;
+    filter: drop-shadow(0 0 4px rgba(254, 240, 138, 0.8));
+  }
+
+  .divider-crown {
+    font-size: 0.95rem;
+    color: #1d4ed8;
+  }
+}
+
+/* Save the Date Title */
 .date-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: 2vh;
-  animation: fadeInDate 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .save-the-date-title {
   font-family: var(--font-moul), serif;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 400;
   letter-spacing: 0.5px;
   line-height: 1.4;
   color: #0e2b5c;
-  background: linear-gradient(180deg, #09234e 0%, #164696 50%, #2563eb 80%, #0e2b5c 100%);
+  background: linear-gradient(180deg, #09234e 0%, #164696 50%, #2563eb 85%, #0e2b5c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: 
     drop-shadow(0 1px 0 #ffffff)
-    drop-shadow(0 3px 8px rgba(14, 43, 92, 0.3));
+    drop-shadow(0 2px 6px rgba(14, 43, 92, 0.25));
+
+  @media (max-width: 420px) {
+    font-size: 0.98rem;
+  }
 }
 
-.wedding-date-text {
-  font-family: 'Kantumruy Pro', var(--font-body);
-  font-size: 1.18rem;
+/* Luxury Date Pill Badge */
+.wedding-date-badge {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.85) 100%);
+  border: 1.5px solid #d4af37;
+  box-shadow: 
+    0 4px 12px rgba(14, 43, 92, 0.12),
+    inset 0 0 10px rgba(254, 240, 138, 0.35);
+  overflow: hidden;
+  margin-top: 3px;
+
+  .date-khmer-text {
+    font-family: 'Kantumruy Pro', var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0b2559;
+    letter-spacing: 0.3px;
+  }
+
+  .date-sub-en {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #996515;
+    letter-spacing: 2.5px;
+    margin-top: 1px;
+  }
+
+  .badge-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transform: skewX(-25deg);
+    animation: badgeShine 4.5s infinite;
+  }
+}
+
+@keyframes badgeShine {
+  0%, 65% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Live Countdown Timer */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(212, 175, 55, 0.35);
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+
+  .countdown-num {
+    font-family: 'Cinzel', monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0b2559;
+    line-height: 1.1;
+  }
+
+  .countdown-label {
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: #78350f;
+    margin-top: 2px;
+  }
+}
+
+.countdown-sep {
+  font-family: 'Cinzel', monospace;
+  font-size: 1.1rem;
   font-weight: 700;
-  letter-spacing: 1px;
-  color: #12346d;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  color: #d4af37;
 }
 
 .altar-spacer {
@@ -282,117 +621,53 @@ function toggleMusic() {
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  margin-bottom: 1vh;
+  margin-bottom: 0.5vh;
   z-index: 30;
 }
 
 .back-btn, .sound-toggle-btn {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  color: #0e2b5c;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  color: #0b2559;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 15px rgba(11, 37, 89, 0.2);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-  transition: all 0.25s ease;
-}
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
-.back-btn:hover, .sound-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: scale(1.08);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+  &:hover {
+    transform: scale(1.08);
+    background: #ffffff;
+    border-color: #d4af37;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .sound-toggle-btn.active {
-  background: #1e40af;
+  background: linear-gradient(135deg, #1d4ed8 0%, #0b2559 100%);
   color: #ffffff;
-  border-color: #3b82f6;
-  box-shadow: 0 0 14px rgba(37, 99, 235, 0.5);
+  border-color: #fef08a;
+  box-shadow: 0 4px 15px rgba(29, 78, 216, 0.4);
 }
 
-/* Animations */
-@keyframes calligraphyRevealTop {
+@keyframes cardFadeIn {
   0% {
     opacity: 0;
-    transform: translateX(-22px) translateY(-30px) scale(0.9);
-    filter: blur(8px);
+    transform: translateY(20px) scale(0.95);
   }
   100% {
     opacity: 1;
-    transform: translateX(-22px) translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes calligraphyRevealBottom {
-  0% {
-    opacity: 0;
-    transform: translateX(25px) translateY(20px) scale(0.9);
-    filter: blur(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(25px) translateY(-14px) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes ampersandSpin {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.4) rotate(-30deg);
-  }
-  100% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1) rotate(0deg);
-  }
-}
-
-@keyframes fadeInDate {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-    letter-spacing: 7px;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    letter-spacing: 4px;
-  }
-}
-
-/* Responsive */
-@media (max-height: 700px) {
-  .top-spacer {
-    height: 8vh;
-    min-height: 45px;
-  }
-  .calligraphy-name {
-    font-size: 1.95rem;
-  }
-  .save-the-date-title {
-    font-size: 1rem;
-  }
-  .wedding-date-text {
-    font-size: 1.05rem;
-  }
-}
-
-@media (min-width: 480px) and (min-height: 800px) {
-  .calligraphy-name {
-    font-size: 2.6rem;
-  }
-  .save-the-date-title {
-    font-size: 1.25rem;
-  }
-  .wedding-date-text {
-    font-size: 1.28rem;
+    transform: translateY(0) scale(1);
   }
 }
 </style>
