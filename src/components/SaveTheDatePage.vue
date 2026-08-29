@@ -14,6 +14,9 @@
       <!-- Particle Effects Layer -->
       <ParticleEffects />
 
+      <!-- Flying Vector Bluebirds Layer (Scalable Vector SVG) -->
+      <BirdFlockEffect />
+
       <!-- Main Typography & Content -->
       <div class="page-content">
         <!-- Top Spacer to align names in clear sky -->
@@ -77,6 +80,7 @@
 <script setup>
 import { ref } from 'vue'
 import ParticleEffects from './ParticleEffects.vue'
+import BirdFlockEffect from './BirdFlockEffect.vue'
 import altarBgUrl from '../assets/wedding_altar_bg.jpg'
 
 const emit = defineEmits(['back-to-cover'])

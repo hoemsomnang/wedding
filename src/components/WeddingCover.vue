@@ -12,10 +12,13 @@
         <div class="card-lighting-overlay"></div>
       </div>
 
-      <!-- Particle Effects Layer (Flying Bluebirds, Falling Petals, Butterflies) -->
+      <!-- Particle Effects Layer (Falling Petals, Butterflies) -->
       <ParticleEffects />
 
-        <!-- Main Content Area -->
+      <!-- Flying Vector Bluebirds Layer (Scalable Vector SVG) -->
+      <BirdFlockEffect />
+
+      <!-- Main Content Area -->
       <div class="card-content" :class="{ 'is-opening': isOpening }">
         <!-- Top Monogram Section (Floating directly on sky, no circular container) -->
         <div class="monogram-section">
@@ -91,6 +94,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import ParticleEffects from './ParticleEffects.vue'
+import BirdFlockEffect from './BirdFlockEffect.vue'
 import floralBgUrl from '../assets/wedding_floral_bg.jpg'
 import rawMonogramUrl from '../assets/sapphire_m_crest_pure.jpg'
 import confetti from 'canvas-confetti'

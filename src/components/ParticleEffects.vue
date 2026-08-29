@@ -1,45 +1,20 @@
 <template>
   <div class="particles-container" aria-hidden="true">
-    <!-- Flying Bluebirds Flock (matching photo 1) -->
+    <!-- Ambient Small Vector Bluebirds (using our new Scalable Vector SVG bird) -->
     <div
-      v-for="bird in flyingBirds"
-      :key="'bird-' + bird.id"
-      class="flying-bird"
+      v-for="bird in ambientBirds"
+      :key="'ambient-bird-' + bird.id"
+      class="ambient-small-bird"
       :style="{
         left: bird.x + '%',
         top: bird.y + '%',
+        width: bird.size + 'px',
+        height: bird.size + 'px',
         animationDuration: bird.duration + 's',
-        animationDelay: bird.delay + 's',
-        transform: `scale(${bird.scale}) rotate(${bird.angle}deg)`
+        animationDelay: bird.delay + 's'
       }"
     >
-      <svg class="bird-svg" viewBox="0 0 100 80" width="46" height="38">
-        <!-- Left Wing -->
-        <path
-          d="M 50 40 Q 25 5 0 20 Q 20 40 45 42 Z"
-          fill="url(#blueFeatherGrad)"
-          class="bird-wing wing-l"
-        />
-        <!-- Right Wing -->
-        <path
-          d="M 50 40 Q 75 5 100 20 Q 80 40 55 42 Z"
-          fill="url(#blueFeatherGrad)"
-          class="bird-wing wing-r"
-        />
-        <!-- Bird Body & Head -->
-        <ellipse cx="50" cy="42" rx="6" ry="16" fill="#1d4ed8" />
-        <ellipse cx="50" cy="43" rx="4" ry="12" fill="#dbeafe" />
-        <circle cx="50" cy="27" r="5" fill="#1e3a8a" />
-        <!-- Tail -->
-        <path d="M 46 54 L 50 72 L 54 54 Z" fill="#2563eb" />
-        <defs>
-          <linearGradient id="blueFeatherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#38bdf8" />
-            <stop offset="50%" stop-color="#2563eb" />
-            <stop offset="100%" stop-color="#1e3a8a" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <LottieBluebird :speed="bird.wingSpeed" :flipForward="true" />
     </div>
 
     <!-- Floating Light Sparkles -->
@@ -113,21 +88,22 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import LottieBluebird from './LottieBluebird.vue'
 
 const sparkles = ref([])
 const petals = ref([])
 const butterflies = ref([])
-const flyingBirds = ref([])
+const ambientBirds = ref([])
 
 onMounted(() => {
-  // Generate flying blue birds matching image 1
-  flyingBirds.value = [
-    { id: 1, x: 42, y: 28, duration: 9, delay: 0, scale: 1.1, angle: -12 },
-    { id: 2, x: 20, y: 44, duration: 11, delay: 1.2, scale: 0.85, angle: 18 },
-    { id: 3, x: 68, y: 42, duration: 10, delay: 0.8, scale: 0.9, angle: -15 },
-    { id: 4, x: 32, y: 55, duration: 12, delay: 2.5, scale: 0.75, angle: 25 },
-    { id: 5, x: 74, y: 60, duration: 10.5, delay: 1.8, scale: 0.8, angle: -20 },
-    { id: 6, x: 48, y: 68, duration: 13, delay: 3.2, scale: 0.65, angle: 10 }
+  // Ambient Small Vector Bluebirds (delicate background flyers across sky)
+  ambientBirds.value = [
+    { id: 1, x: 18, y: 22, size: 48, duration: 11, delay: 0, wingSpeed: 1.15 },
+    { id: 2, x: 72, y: 34, size: 44, duration: 13, delay: 1.8, wingSpeed: 0.95 },
+    { id: 3, x: 38, y: 48, size: 38, duration: 14, delay: 3.5, wingSpeed: 1.05 },
+    { id: 4, x: 82, y: 20, size: 36, duration: 12.5, delay: 5.2, wingSpeed: 1.2 },
+    { id: 5, x: 26, y: 62, size: 42, duration: 13.5, delay: 7.0, wingSpeed: 1.0 },
+    { id: 6, x: 58, y: 28, size: 40, duration: 12, delay: 8.8, wingSpeed: 1.1 }
   ]
 
   // Sparkles
@@ -171,52 +147,35 @@ onMounted(() => {
   z-index: 10;
 }
 
-/* Flying Blue Birds (from Photo 1) */
-.flying-bird {
+/* Ambient Small Vector Bluebirds */
+.ambient-small-bird {
   position: absolute;
-  filter: drop-shadow(0 4px 10px rgba(30, 64, 175, 0.4));
-  animation: birdSwoop linear infinite;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 6px rgba(10, 35, 80, 0.3));
+  animation: ambientBirdDrift linear infinite;
+  opacity: 0.85;
 }
 
-.bird-wing {
-  transform-origin: 50px 40px;
-  animation: birdFlap 0.4s ease-in-out infinite alternate;
-}
-
-.wing-l {
-  animation-delay: 0s;
-}
-
-.wing-r {
-  animation-delay: 0.05s;
-}
-
-@keyframes birdFlap {
+@keyframes ambientBirdDrift {
   0% {
-    transform: scaleY(1);
-  }
-  100% {
-    transform: scaleY(-0.4);
-  }
-}
-
-@keyframes birdSwoop {
-  0% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
+    transform: translate(0, 0) scale(0.9) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 0.85;
+  12% {
+    opacity: 0.88;
   }
-  50% {
-    transform: translate(25px, -35px) scale(1.05) rotate(12deg);
-    opacity: 0.95;
+  40% {
+    transform: translate(30px, -18px) scale(1.02) rotate(3deg);
+  }
+  70% {
+    transform: translate(60px, 8px) scale(0.96) rotate(-2deg);
+    opacity: 0.85;
   }
   90% {
     opacity: 0.75;
   }
   100% {
-    transform: translate(60px, -80px) scale(0.9) rotate(20deg);
+    transform: translate(90px, -10px) scale(0.92) rotate(1deg);
     opacity: 0;
   }
 }
