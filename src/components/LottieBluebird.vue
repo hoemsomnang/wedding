@@ -1,17 +1,29 @@
 <template>
   <div
-    ref="lottieContainer"
     class="lottie-bird-wrapper"
     :class="{ 'flip-forward': flipForward }"
-  ></div>
+    :style="{ '--bird-speed': speed }"
+  >
+    <object
+      :data="birdSvg"
+      type="image/svg+xml"
+      class="bird-svg"
+      aria-label="Wedding Bluebird"
+    >
+      <img
+        :src="birdSvg"
+        alt="Wedding Bluebird"
+        class="bird-svg"
+        draggable="false"
+      />
+    </object>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import lottie from 'lottie-web'
-import birdAnimationData from '../assets/wedding_bluebird_lottie.json'
+import birdSvg from '../assets/wedding_bluebird.svg'
 
-const props = defineProps({
+defineProps({
   speed: {
     type: Number,
     default: 1.0
@@ -19,28 +31,6 @@ const props = defineProps({
   flipForward: {
     type: Boolean,
     default: true
-  }
-})
-
-const lottieContainer = ref(null)
-let animInstance = null
-
-onMounted(() => {
-  if (lottieContainer.value) {
-    animInstance = lottie.loadAnimation({
-      container: lottieContainer.value,
-      renderer: 'svg', // Scalable Vector Graphics (SVG)
-      loop: true,
-      autoplay: true,
-      animationData: birdAnimationData
-    })
-    animInstance.setSpeed(props.speed)
-  }
-})
-
-onUnmounted(() => {
-  if (animInstance) {
-    animInstance.destroy()
   }
 })
 </script>
@@ -52,12 +42,14 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
-.lottie-bird-wrapper :deep(svg) {
+.bird-svg {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  object-fit: contain;
+  pointer-events: none;
   filter: drop-shadow(0 4px 10px rgba(10, 35, 80, 0.4));
 }
 
@@ -67,3 +59,4 @@ onUnmounted(() => {
   transform-origin: center center;
 }
 </style>
+
