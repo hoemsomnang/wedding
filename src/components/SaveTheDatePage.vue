@@ -65,22 +65,22 @@
               <div class="parent-col left-col">
                 <div class="parent-row">
                   <span class="role-text">លោក</span>
-                  <span class="name-text">ប៉ែនសេង ខេម រ៉ូហ្វង់</span>
+                  <span class="name-text">ហ៊ឹម លាង</span>
                 </div>
                 <div class="parent-row">
                   <span class="role-text">លោកស្រី</span>
-                  <span class="name-text">ចាន់ធី ម៉ារី យ៉ង់</span>
+                  <span class="name-text">អ៊ុំ ស្រ៊ឺ</span>
                 </div>
               </div>
 
               <div class="parent-col right-col">
                 <div class="parent-row">
                   <span class="role-text">លោក</span>
-                  <span class="name-text">ស៊ូ ចំរើន</span>
+                  <span class="name-text">ខន សារេត</span>
                 </div>
                 <div class="parent-row">
                   <span class="role-text">លោកស្រី</span>
-                  <span class="name-text">ឌុច យ៉ែម</span>
+                  <span class="name-text">ធៀ ម៉ុំ</span>
                 </div>
               </div>
             </div>
@@ -101,26 +101,25 @@
             <div class="couple-names-grid">
               <div class="couple-col groom-col">
                 <span class="couple-role">កូនប្រុសនាម</span>
-                <h2 class="couple-name">ម៉ាត ផេង ឡុញហ័រ</h2>
+                <h2 class="couple-name">ហ៊ឹម សំណាង</h2>
               </div>
               <div class="couple-col bride-col">
                 <span class="couple-role">កូនស្រីនាម</span>
-                <h2 class="couple-name">ធីតា រ៉េន ឡុញហ័រ</h2>
+                <h2 class="couple-name">ខន សារ៉េន</h2>
               </div>
             </div>
 
             <!-- Wedding Auspicious Date & Time -->
             <div class="wedding-datetime-section">
-              <p class="khmer-lunar-date">នៅថ្ងៃសុក្រ ៥កើត ខែចេត្រ ឆ្នាំរោង ឆស័ក ពុទ្ធសករាជ ២៥៦៨</p>
-              <p class="solar-date-highlight">ត្រូវនឹងថ្ងៃទី ២៧ ខែមីនា ឆ្នាំ ២០២៦</p>
+              <p class="khmer-lunar-date">នៅថ្ងៃសៅរ៍ ៦កើត ខែផល្គុន ឆ្នាំមមី អដ្ឋស័ក ពុទ្ធសករាជ ២៥៧០</p>
+              <p class="solar-date-highlight">ត្រូវនឹងថ្ងៃទី ១៣ ខែមីនា ឆ្នាំ ២០២៧</p>
               <p class="reception-time">វេលាម៉ោង ០៥ : ០០ ល្ងាចនៅ</p>
             </div>
 
             <!-- Wedding Reception Venue -->
             <div class="venue-section">
-              <h3 class="venue-main-name">ភោជនីយដ្ឋាន សេនជូរីប្រាយ</h3>
-              <p class="venue-address-line">ផ្ទះលេខ ១០២ ផ្លូវលេខ ៣១៥</p>
-              <p class="venue-address-line">សង្កាត់បឹងកក់២ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ</p>
+              <h3 class="venue-main-name">គេហដ្ឋាននៃសិរីមង្គលអាពាហ៍ពិពាហ៍</h3>
+              <p class="venue-address-line">ស្ថិតនៅ ស្រុកសំពៅលូន ខេត្តបាត់ដំបង</p>
               <p class="venue-closing-wish">ដោយមេត្រីភាព។</p>
             </div>
 
@@ -140,11 +139,77 @@
             
             <!-- Vintage Ornate "Click to Save The Date" Button -->
             <div class="save-date-button-wrap">
-              <button class="vintage-save-date-btn" @click="handleSaveDate">
-                <div class="vintage-frame-corner top-left"></div>
-                <div class="vintage-frame-corner top-right"></div>
-                <div class="vintage-frame-corner bottom-left"></div>
-                <div class="vintage-frame-corner bottom-right"></div>
+              <button class="vintage-save-date-btn" @click="addToCalendar" aria-label="Save the date to calendar">
+                <!-- Ornate Vector Cartouche Frame -->
+                <svg class="cartouche-frame-svg" viewBox="0 0 280 66" fill="none" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="plaqueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96" />
+                      <stop offset="45%" stop-color="#fdfbf6" stop-opacity="0.94" />
+                      <stop offset="100%" stop-color="#f5ecd8" stop-opacity="0.96" />
+                    </linearGradient>
+                    <filter id="plaqueShadow" x="-10%" y="-10%" width="120%" height="130%">
+                      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4a361c" flood-opacity="0.18" />
+                    </filter>
+                  </defs>
+                  
+                  <!-- Outer Plaque Shape with Scallop / Bracket Corners -->
+                  <path
+                    d="M 28,5 
+                       L 252,5 
+                       C 261,5 267,11 267,19 
+                       C 267,23 270.5,26 274.5,26 
+                       C 276.5,26 277.5,27.5 277.5,33 
+                       C 277.5,38.5 276.5,40 274.5,40 
+                       C 270.5,40 267,43 267,47 
+                       C 267,55 261,61 252,61 
+                       L 28,61 
+                       C 19,61 13,55 13,47 
+                       C 13,43 9.5,40 5.5,40 
+                       C 3.5,40 2.5,38.5 2.5,33 
+                       C 2.5,27.5 3.5,26 5.5,26 
+                       C 9.5,26 13,23 13,19 
+                       C 13,11 19,5 28,5 Z"
+                    fill="url(#plaqueGrad)"
+                    stroke="#8c6c44"
+                    stroke-width="1.6"
+                    filter="url(#plaqueShadow)"
+                  />
+
+                  <!-- Inner Inset Filigree Border -->
+                  <path
+                    d="M 30,9 
+                       L 250,9 
+                       C 257,9 262,14 262,20 
+                       C 262,24 265,26.5 269,27.5 
+                       C 270.2,28.5 271,30 271,33 
+                       C 271,36 270.2,37.5 269,38.5 
+                       C 265,39.5 262,42 262,46 
+                       C 262,52 257,57 250,57 
+                       L 30,57 
+                       C 23,57 18,52 18,46 
+                       C 18,42 15,39.5 11,38.5 
+                       C 9.8,37.5 9,36 9,33 
+                       C 9,30 9.8,28.5 11,27.5 
+                       C 15,26.5 18,24 18,20 
+                       C 18,14 23,9 30,9 Z"
+                    fill="none"
+                    stroke="#bda480"
+                    stroke-width="0.9"
+                  />
+
+                  <!-- Left & Right Center Ear Accents -->
+                  <circle cx="6.5" cy="33" r="1.8" fill="#8c6c44" />
+                  <circle cx="273.5" cy="33" r="1.8" fill="#8c6c44" />
+
+                  <!-- Corner Inset Accent Dots -->
+                  <circle cx="22" cy="13" r="1.2" fill="#a48154" />
+                  <circle cx="258" cy="13" r="1.2" fill="#a48154" />
+                  <circle cx="22" cy="53" r="1.2" fill="#a48154" />
+                  <circle cx="258" cy="53" r="1.2" fill="#a48154" />
+                </svg>
+
+                <!-- Plaque Text -->
                 <span class="btn-khmer-lbl">ចុចកត់ត្រាថ្ងៃកម្មវិធី</span>
                 <span class="btn-en-lbl">Click to Save The Date</span>
                 <div class="btn-gold-shimmer"></div>
@@ -154,13 +219,27 @@
             <!-- Event Countdown Header Section -->
             <div class="countdown-header-block">
               <h2 class="countdown-main-kh">ចំនួនថ្ងៃរាប់ថយក្រោយ</h2>
-              <div class="gold-filigree-divider">
-                <span class="diamond-point">❖</span>
-                <span class="gold-line"></span>
-                <span class="center-ornament">❦</span>
-                <span class="gold-line"></span>
-                <span class="diamond-point">❖</span>
+              
+              <!-- Exact Matching Filigree Divider -->
+              <div class="filigree-divider-wrap">
+                <svg class="filigree-divider-svg" viewBox="0 0 240 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Left horizontal line & terminal dot -->
+                  <path d="M22 9 H82" stroke="#8d6b38" stroke-width="1.1" stroke-linecap="round" />
+                  <circle cx="20" cy="9" r="1.5" fill="#8d6b38" />
+                  <circle cx="85" cy="9" r="1.6" fill="#8d6b38" />
+                  
+                  <!-- Central intertwined oval knot motif -->
+                  <ellipse cx="98" cy="9" rx="7.5" ry="4" stroke="#8d6b38" stroke-width="1.2" fill="none" />
+                  <polygon points="120,4.5 124.5,9 120,13.5 115.5,9" fill="#8d6b38" />
+                  <ellipse cx="142" cy="9" rx="7.5" ry="4" stroke="#8d6b38" stroke-width="1.2" fill="none" />
+                  
+                  <!-- Right horizontal line & terminal dot -->
+                  <circle cx="155" cy="9" r="1.6" fill="#8d6b38" />
+                  <path d="M158 9 H218" stroke="#8d6b38" stroke-width="1.1" stroke-linecap="round" />
+                  <circle cx="220" cy="9" r="1.5" fill="#8d6b38" />
+                </svg>
               </div>
+
               <h3 class="countdown-sub-en">EVENT COUNTDOWN</h3>
 
               <!-- 4 Live Countdown Cards -->
@@ -219,11 +298,8 @@
             
             <!-- Timeline Header (Exact Match to Reference Photo) -->
             <div class="schedule-page-header">
-              <h3 class="schedule-date-kh">កម្មវិធីថ្ងៃសុក្រ ទី២៧ ខែមីនា ឆ្នាំ២០២៦</h3>
-              <p class="schedule-address-kh">នៅភោជនីយដ្ឋាន សេនជូរីប្រាយ ផ្ទះលេខ ១០២ ផ្លូវលេខ ៣១៥</p>
-              <p class="schedule-address-kh-sub">សង្កាត់បឹងកក់២ ខណ្ឌទួលគោក រាជធានីភ្នំពេញ</p>
-              
-            
+              <h3 class="schedule-date-kh">កម្មវិធីថ្ងៃសៅរ៍ ទី១៣ ខែមីនា ឆ្នាំ២០២៧</h3>
+              <p class="schedule-address-kh">ប្រារព្ធនៅ ស្រុកសំពៅលូន ខេត្តបាត់ដំបង</p>
             </div>
 
             <!-- Vertical Timeline Flow Directly on Sky Background (Matching Photo 4) -->
@@ -433,7 +509,7 @@
                   <div class="step-khmer-title">
                     <span class="step-time">០៥:០០ ល្ងាច</span>
                     <span class="step-sep">:</span>
-                    <span class="step-name">អញ្ជើញភ្ញៀវកិត្តិយសពិសាភោជនាហារពេលល្ងាច នៅភោជនីយដ្ឋាន សេនជូរីប្រាយ ដោយមេត្រីភាព</span>
+                    <span class="step-name">អញ្ជើញភ្ញៀវកិត្តិយសពិសាភោជនាហារពេលល្ងាច ដោយមេត្រីភាព</span>
                   </div>
                 </div>
               </div>
@@ -447,59 +523,168 @@
         </section>
 
         <!-- ==========================================
-             PAGE 4: VENUE & WISHES
+             PAGE 4: LOCATION & ROADMAP (Exact Match to Photo)
              ========================================== -->
-        <section class="snap-page section-venue-wishes" id="page-venue">
-          <div class="venue-wishes-inner">
+        <section class="snap-page section-location-map-page" id="page-venue">
+          <div class="location-map-inner">
             
-            <!-- Venue Location Card -->
-            <div class="venue-location-card">
-              <h3 class="venue-card-title">ទីតាំងប្រារព្ធពិធី (Venue Location)</h3>
-              <p class="venue-loc-name">ភោជនីយដ្ឋាន សេនជូរីប្រាយ</p>
-              <p class="venue-loc-sub">Century Bright Restaurant, Phnom Penh</p>
-              
-              <a
-                href="https://maps.google.com/?q=Century+Bright+Restaurant+Phnom+Penh"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="map-direct-btn"
-                @click="playChimeSound"
-              >
-                <MapPin :size="18" /> បើកមើលផែនទី (Open in Google Maps)
-              </a>
+            <!-- Centered Royal Location Header with Gold Filigree Wings -->
+            <div class="location-page-header">
+              <div class="location-title-badge">
+                <div class="filigree-wing left">
+                  <span class="sparkle-diamond">❖</span>
+                  <span class="flourish-line"></span>
+                </div>
+                <h2 class="location-title-kh">ទីតាំងកម្មវិធី</h2>
+                <div class="filigree-wing right">
+                  <span class="flourish-line"></span>
+                  <span class="sparkle-diamond">❖</span>
+                </div>
+              </div>
             </div>
 
-            <!-- Guestbook Card -->
-            <div class="guestbook-card">
-              <h3 class="guestbook-title">សៀវភៅប្រសិទ្ធពរជ័យ (Guest Wishes)</h3>
-              
-              <form @submit.prevent="submitWish" class="wish-form">
-                <input
-                  type="text"
-                  v-model="wishSender"
-                  placeholder="ឈ្មោះរបស់អ្នក (Your Name)"
-                  class="wish-input"
-                  required
+            <!-- Illustrated Schematic Roadmap Art (Loaded as SVG Image Asset) -->
+            <div class="roadmap-canvas-card" @click="openGoogleMaps" title="ចុចដើម្បីបើកផែនទី Google Maps">
+              <img
+                :src="roadmapMapSvgUrl"
+                alt="Wedding Location Roadmap"
+                class="roadmap-img"
+              />
+            </div>
+
+            <!-- QR Code Section Linking Directly to Google Maps Location (Matching Photo) -->
+            <div class="map-qrcode-card" @click="openGoogleMaps">
+              <div class="qrcode-wrapper">
+                <img
+                  v-if="qrCodeDataUrl"
+                  :src="qrCodeDataUrl"
+                  alt="Google Maps QR Code"
+                  class="qrcode-img"
                 />
-                <textarea
-                  v-model="wishMessage"
-                  placeholder="សូមសរសេរពាក្យជូនពរនៅទីនេះ... (Your Blessing Message)"
-                  class="wish-textarea"
-                  rows="3"
-                  required
-                ></textarea>
-                <button type="submit" class="wish-btn" @click="playChimeSound">
-                  <MessageCircle :size="18" /> ផ្ញើពាក្យជូនពរ (Send Blessing)
-                </button>
-                <p v-if="wishSent" class="wish-sent-msg">✨ សូមអរគុណសម្រាប់ពាក្យជូនពរដ៏មានអត្ថន័យ!</p>
-              </form>
+                <div v-else class="qrcode-skeleton"></div>
+              </div>
+              <!-- Vintage Cartouche Plaque Button (Matching Image) -->
+              <button class="vintage-location-btn" @click.stop="openGoogleMaps" aria-label="Open location map in Google Maps">
+                <!-- Ornate Vector Cartouche Frame -->
+                <svg class="cartouche-frame-svg" viewBox="0 0 280 66" fill="none" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="locPlaqueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.96" />
+                      <stop offset="45%" stop-color="#fdfbf6" stop-opacity="0.94" />
+                      <stop offset="100%" stop-color="#f5ecd8" stop-opacity="0.96" />
+                    </linearGradient>
+                    <filter id="locPlaqueShadow" x="-10%" y="-10%" width="120%" height="130%">
+                      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#4a361c" flood-opacity="0.18" />
+                    </filter>
+                  </defs>
+                  
+                  <!-- Outer Plaque Shape with Scallop / Bracket Corners -->
+                  <path
+                    d="M 28,5 
+                       L 252,5 
+                       C 261,5 267,11 267,19 
+                       C 267,23 270.5,26 274.5,26 
+                       C 276.5,26 277.5,27.5 277.5,33 
+                       C 277.5,38.5 276.5,40 274.5,40 
+                       C 270.5,40 267,43 267,47 
+                       C 267,55 261,61 252,61 
+                       L 28,61 
+                       C 19,61 13,55 13,47 
+                       C 13,43 9.5,40 5.5,40 
+                       C 3.5,40 2.5,38.5 2.5,33 
+                       C 2.5,27.5 3.5,26 5.5,26 
+                       C 9.5,26 13,23 13,19 
+                       C 13,11 19,5 28,5 Z"
+                    fill="url(#locPlaqueGrad)"
+                    stroke="#8c6c44"
+                    stroke-width="1.6"
+                    filter="url(#locPlaqueShadow)"
+                  />
+
+                  <!-- Inner Inset Filigree Border -->
+                  <path
+                    d="M 30,9 
+                       L 250,9 
+                       C 257,9 262,14 262,20 
+                       C 262,24 265,26.5 269,27.5 
+                       C 270.2,28.5 271,30 271,33 
+                       C 271,36 270.2,37.5 269,38.5 
+                       C 265,39.5 262,42 262,46 
+                       C 262,52 257,57 250,57 
+                       L 30,57 
+                       C 23,57 18,52 18,46 
+                       C 18,42 15,39.5 11,38.5 
+                       C 9.8,37.5 9,36 9,33 
+                       C 9,30 9.8,28.5 11,27.5 
+                       C 15,26.5 18,24 18,20 
+                       C 18,14 23,9 30,9 Z"
+                    fill="none"
+                    stroke="#bda480"
+                    stroke-width="0.9"
+                  />
+
+                  <!-- Left & Right Center Ear Accents -->
+                  <circle cx="6.5" cy="33" r="1.8" fill="#8c6c44" />
+                  <circle cx="273.5" cy="33" r="1.8" fill="#8c6c44" />
+
+                  <!-- Corner Inset Accent Dots -->
+                  <circle cx="22" cy="13" r="1.2" fill="#a48154" />
+                  <circle cx="258" cy="13" r="1.2" fill="#a48154" />
+                  <circle cx="22" cy="53" r="1.2" fill="#a48154" />
+                  <circle cx="258" cy="53" r="1.2" fill="#a48154" />
+                </svg>
+
+                <!-- Plaque Text -->
+                <span class="btn-khmer-lbl">ចុចមើលទីតាំង</span>
+                <span class="btn-en-lbl">Click to View Location</span>
+                <div class="btn-gold-shimmer"></div>
+              </button>
             </div>
 
-            <div class="timeline-bottom-spacer"></div>
+            <!-- Spacer before fixed bottom navigation bar -->
+            <div class="location-bottom-spacer"></div>
+
           </div>
         </section>
 
       </div>
+
+      <!-- ========================================================
+           GUEST WISHES SLIDE-UP MODAL (When 4th nav tab clicked)
+           ======================================================== -->
+      <transition name="modal-fade">
+        <div v-if="showWishesModal" class="wishes-modal-backdrop" @click.self="toggleWishesModal">
+          <div class="wishes-modal-card">
+            <div class="modal-header-row">
+              <h3 class="modal-title-kh">សៀវភៅប្រសិទ្ធពរជ័យ</h3>
+              <button class="modal-close-btn" @click="toggleWishesModal" aria-label="Close">
+                <X :size="20" />
+              </button>
+            </div>
+            
+            <form @submit.prevent="submitWish" class="wish-modal-form">
+              <input
+                type="text"
+                v-model="wishSender"
+                placeholder="ឈ្មោះរបស់អ្នក (Your Name)"
+                class="wish-modal-input"
+                required
+              />
+              <textarea
+                v-model="wishMessage"
+                placeholder="សូមសរសេរពាក្យជូនពរនៅទីនេះ... (Your Blessing Message)"
+                class="wish-modal-textarea"
+                rows="3"
+                required
+              ></textarea>
+              <button type="submit" class="wish-modal-btn" @click="playChimeSound">
+                <Send :size="16" /> ផ្ញើពាក្យជូនពរ (Send Blessing)
+              </button>
+              <p v-if="wishSent" class="wish-modal-sent-msg">✨ សូមអរគុណសម្រាប់ពាក្យជូនពរដ៏មានអត្ថន័យ!</p>
+            </form>
+          </div>
+        </div>
+      </transition>
 
       <!-- Bottom Floating 4-Button Navigation Bar (Matching Photo) -->
       <div class="bottom-action-nav">
@@ -521,17 +706,17 @@
         </button>
         <button
           class="nav-action-btn"
-          :class="{ active: activeTab === 'timeline' }"
-          @click="scrollToPage('page-timeline')"
-          title="កម្មវិធី (Wedding Timeline Schedule)"
+          :class="{ active: activeTab === 'countdown' }"
+          @click="scrollToPage('page-countdown')"
+          title="រូបថតគូស្នេហ៍ (Couple Showcase)"
         >
           <Image :size="22" stroke-width="1.8" />
         </button>
         <button
           class="nav-action-btn"
-          :class="{ active: activeTab === 'countdown' }"
-          @click="scrollToPage('page-countdown')"
-          title="រាប់ថយក្រោយ (Countdown & Photo)"
+          :class="{ active: showWishesModal }"
+          @click="toggleWishesModal"
+          title="ពាក្យជូនពរ (Guest Wishes)"
         >
           <MessageCircle :size="22" stroke-width="1.8" />
         </button>
@@ -543,16 +728,32 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import QRCode from 'qrcode'
 import ParticleEffects from './ParticleEffects.vue'
 import rawMonogramUrl from '../assets/sapphire_m_crest_pure.jpg'
 import invitationBgUrl from '../assets/background2.jpg'
 import couplePhotoUrl from '../assets/couple_portrait.jpg'
-import { CalendarDays, MapPin, Image, MessageCircle, ChevronDown } from 'lucide-vue-next'
+import roadmapMapSvgUrl from '../assets/wedding_roadmap_map.svg'
+import { CalendarDays, MapPin, Image, MessageCircle, ChevronDown, ExternalLink, X, Send } from 'lucide-vue-next'
 
 const monogramUrl = ref(rawMonogramUrl)
 const isPlaying = ref(false)
 const scrollContainer = ref(null)
 const activeTab = ref('invite')
+const showWishesModal = ref(false)
+
+const qrCodeDataUrl = ref('')
+const googleMapUrl = "https://www.google.com/maps/place/13%C2%B029'22.0%22N+102%C2%B022'05.2%22E/@13.4851043,102.3649696,16z/data=!4m4!3m3!8m2!3d13.4894418!4d102.3681016!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
+
+function openGoogleMaps() {
+  playChimeSound()
+  window.open(googleMapUrl, '_blank')
+}
+
+function toggleWishesModal() {
+  playChimeSound()
+  showWishesModal.value = !showWishesModal.value
+}
 
 const wishSender = ref('')
 const wishMessage = ref('')
@@ -696,8 +897,8 @@ function processTransparentImage(src) {
   }
 }
 
-// Live Countdown Timer to 27 March 2026
-const targetDate = new Date('2026-03-27T17:00:00')
+// Live Countdown Timer to 13 March 2027
+const targetDate = new Date('2027-03-13T17:00:00')
 const countdown = ref({ days: '00', hours: '00', minutes: '00', seconds: '00' })
 let timer = null
 
@@ -721,7 +922,7 @@ function updateCountdown() {
 
 function handleSaveDate() {
   playChimeSound()
-  const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony+%7C+%E1%9E%9F%E1%9E%B7%E1%9E%9A%E1%9E%B8%E1%9E%98%E1%9E%84%E1%9F%8D%E1%9E%82%E1%9E%9D%E1%9E%96%E1%9E%B6%E1%9E%9E%E1%9E%B7%E1%9E%96%E1%9E%B6%E1%9E%9E&dates=20260327T100000Z/20260327T150000Z&details=Wedding+Invitation+Celebration&location=Century+Bright+Restaurant+Phnom+Penh'
+  const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony+%7C+%E1%9E%9F%E1%9E%B7%E1%9E%9A%E1%9E%B8%E1%9E%98%E1%9E%84%E1%9F%8D%E1%9E%82%E1%9E%9D%E1%9E%96%E1%9E%B6%E1%9E%9E%E1%9E%B7%E1%9E%96%E1%9E%B6%E1%9E%9E&dates=20270313T100000Z/20270313T150000Z&details=Wedding+Invitation+Celebration&location=Century+Bright+Restaurant+Phnom+Penh'
   window.open(calendarUrl, '_blank')
 }
 
@@ -748,10 +949,27 @@ function submitWish() {
   }
 }
 
-onMounted(() => {
+const addToCalendar = handleSaveDate
+
+onMounted(async () => {
   processTransparentImage(rawMonogramUrl)
   updateCountdown()
   timer = setInterval(updateCountdown, 1000)
+
+  // Generate crisp vector-like QR code for Google Maps Location
+  try {
+    qrCodeDataUrl.value = await QRCode.toDataURL(googleMapUrl, {
+      margin: 1,
+      width: 220,
+      color: {
+        dark: '#15325b',
+        light: '#ffffff'
+      },
+      errorCorrectionLevel: 'M'
+    })
+  } catch (err) {
+    console.error('Error generating map QR code:', err)
+  }
 })
 
 onUnmounted(() => {
@@ -1293,7 +1511,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .vintage-save-date-btn {
@@ -1302,59 +1520,81 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 30px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid #8d6b38;
-  border-radius: 18px;
-  box-shadow: 0 4px 16px rgba(141, 107, 56, 0.2), inset 0 0 10px rgba(254, 240, 138, 0.4);
+  width: 246px;
+  height: 54px;
+  padding: 4px 18px;
+  background: transparent;
+  border: none;
+  outline: none;
   cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  overflow: visible;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.28s ease;
+  filter: drop-shadow(0 3px 10px rgba(92, 69, 36, 0.16));
 
   &:hover {
     transform: scale(1.04);
-    background: #ffffff;
-    border-color: #b45309;
+    filter: drop-shadow(0 6px 16px rgba(92, 69, 36, 0.25));
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
 
-.vintage-frame-corner {
+.cartouche-frame-svg {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  border-color: #8d6b38;
-  border-style: solid;
-
-  &.top-left { top: 3px; left: 3px; border-width: 1.5px 0 0 1.5px; }
-  &.top-right { top: 3px; right: 3px; border-width: 1.5px 1.5px 0 0; }
-  &.bottom-left { bottom: 3px; left: 3px; border-width: 0 0 1.5px 1.5px; }
-  &.bottom-right { bottom: 3px; right: 3px; border-width: 0 1.5px 1.5px 0; }
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
 }
 
 .btn-khmer-lbl {
+  position: relative;
+  z-index: 2;
   font-family: $khmer-title-font;
-  font-size: 1.05rem;
-  color: #451a03;
-  line-height: 1.3;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: #15325b;
+  line-height: 1.25;
+  margin-top: -1px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .btn-en-lbl {
-  font-family: 'Cinzel', serif;
+  position: relative;
+  z-index: 2;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
   font-size: 0.68rem;
-  font-weight: 700;
-  color: #78350f;
-  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: #73532a;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .btn-gold-shimmer {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(254, 240, 138, 0.6), transparent);
-  transform: skewX(-25deg);
-  animation: buttonShimmer 4s infinite;
+  inset: 4px;
+  border-radius: 12px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-25deg);
+    animation: buttonShimmer 4.5s infinite;
+  }
 }
 
 @keyframes buttonShimmer {
@@ -1369,41 +1609,39 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 .countdown-main-kh {
   font-family: $khmer-title-font;
-  font-size: 1.25rem;
+  font-size: 1.22rem;
+  font-weight: 400;
   color: #15325b;
-  margin: 0 0 3px 0;
+  margin: 0 0 2px 0;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
 }
 
-.gold-filigree-divider {
+.filigree-divider-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin: 3px 0 5px 0;
-  color: #b45309;
+  width: 100%;
+  max-width: 220px;
+  margin: 2px auto 4px auto;
+}
 
-  .gold-line {
-    width: 36px;
-    height: 1.5px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-  }
-
-  .diamond-point { font-size: 0.7rem; color: #d4af37; }
-  .center-ornament { font-size: 0.9rem; color: #1d4ed8; }
+.filigree-divider-svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .countdown-sub-en {
   font-family: 'Cinzel', serif;
   font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 3.5px;
+  letter-spacing: 4px;
   color: #15325b;
   margin: 0 0 14px 0;
 }
@@ -1648,103 +1886,300 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 }
 
 /* ========================================================
-   PAGE 4: VENUE & WISHES
+   PAGE 4: ILLUSTRATED LOCATION ROADMAP (Exact Match to Photo)
    ======================================================== */
-.section-venue-wishes {
+.section-location-map-page {
   justify-content: flex-start;
 }
 
-.venue-wishes-inner {
+.location-map-inner {
   width: 100%;
   max-width: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 13vh 16px 20px 16px;
+  padding: 15vh 14px 16px 14px;
   box-sizing: border-box;
-}
+  margin: 0 auto;
 
-.venue-location-card {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  padding: 20px 16px;
-  margin-bottom: 20px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
-}
+  @media (max-height: 750px) {
+    padding-top: 12vh;
+  }
 
-.venue-card-title {
-  font-family: $khmer-title-font;
-  font-size: 1.05rem;
-  color: #15325b;
-  margin: 0 0 4px 0;
-}
-
-.venue-loc-name {
-  font-family: $khmer-title-font;
-  font-size: 1rem;
-  color: #1d4ed8;
-  margin: 0 0 2px 0;
-}
-
-.venue-loc-sub {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  color: #64748b;
-  margin: 0 0 12px 0;
-}
-
-.map-direct-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
-  color: #ffffff;
-  font-family: $khmer-body-font;
-  font-size: 0.92rem;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
-  transition: all 0.25s ease;
-
-  &:hover {
-    transform: translateY(-2px);
+  @media (max-height: 650px) {
+    padding-top: 10vh;
   }
 }
 
-.guestbook-card {
+.location-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  padding: 20px 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  max-width: 380px;
+  margin: 0 auto 10px auto;
+  text-align: center;
 }
 
-.guestbook-title {
+.location-title-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 4px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 16px rgba(21, 50, 91, 0.08);
+}
+
+.filigree-wing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .sparkle-diamond {
+    font-size: 0.75rem;
+    color: #c29a4b;
+    line-height: 1;
+    filter: drop-shadow(0 0 3px rgba(254, 240, 138, 0.8));
+    animation: gentlePulse 3s infinite ease-in-out;
+  }
+
+  .flourish-line {
+    width: 26px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #c29a4b, #15325b);
+    border-radius: 1px;
+  }
+
+  &.right .flourish-line {
+    background: linear-gradient(90deg, #15325b, #c29a4b);
+  }
+}
+
+.location-title-kh {
+  font-family: $khmer-title-font;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #15325b;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+
+  @media (max-width: 380px) {
+    font-size: 1.12rem;
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.9)); }
+}
+
+.roadmap-canvas-card {
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 18px;
+  padding: 4px;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, filter 0.25s ease;
+
+  &:hover {
+    transform: scale(1.015);
+    filter: drop-shadow(0 6px 20px rgba(21, 50, 91, 0.15));
+  }
+}
+
+.roadmap-img {
+  width: 100%;
+  height: auto;
+  max-height: 48vh;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(21, 50, 91, 0.08));
+}
+
+/* QR Code Section */
+.map-qrcode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.qrcode-wrapper {
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid rgba(21, 50, 91, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(21, 50, 91, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qrcode-img {
+  width: 78px;
+  height: 78px;
+  display: block;
+  border-radius: 6px;
+
+  @media (max-height: 700px) {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+.qrcode-skeleton {
+  width: 78px;
+  height: 78px;
+  background: rgba(21, 50, 91, 0.06);
+  border-radius: 6px;
+}
+
+.vintage-location-btn {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 50px;
+  padding: 3px 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  overflow: visible;
+  margin-top: 5px;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.28s ease;
+  filter: drop-shadow(0 3px 10px rgba(92, 69, 36, 0.16));
+
+  &:hover {
+    transform: scale(1.04);
+    filter: drop-shadow(0 6px 16px rgba(92, 69, 36, 0.25));
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .btn-khmer-lbl {
+    position: relative;
+    z-index: 2;
+    font-family: $khmer-title-font;
+    font-size: 0.94rem;
+    font-weight: 400;
+    color: #15325b;
+    line-height: 1.25;
+    margin-top: -1px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-en-lbl {
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #73532a;
+    letter-spacing: 0.5px;
+    margin-top: 1px;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.location-bottom-spacer {
+  height: 70px;
+  width: 100%;
+}
+
+/* ========================================================
+   GUESTBOOK WISHES MODAL
+   ======================================================== */
+.wishes-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 19, 43, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.wishes-modal-card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 0 12px 36px rgba(11, 19, 43, 0.35);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(21, 50, 91, 0.1);
+  padding-bottom: 8px;
+}
+
+.modal-title-kh {
   font-family: $khmer-title-font;
   font-size: 1.05rem;
   color: #15325b;
-  text-align: center;
-  margin: 0 0 12px 0;
+  margin: 0;
 }
 
-.wish-form {
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #15325b;
+    background: rgba(21, 50, 91, 0.08);
+  }
+}
+
+.wish-modal-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.wish-input, .wish-textarea {
+.wish-modal-input, .wish-modal-textarea {
   width: 100%;
   padding: 10px 14px;
   border-radius: 12px;
@@ -1761,30 +2196,31 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   }
 }
 
-.wish-btn {
+.wish-modal-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 12px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+  padding: 11px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #15325b 100%);
   color: #ffffff;
   font-family: $khmer-body-font;
   font-size: 0.92rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.3);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
   transition: all 0.25s ease;
 
   &:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(29, 78, 216, 0.4);
   }
 }
 
-.wish-sent-msg {
+.wish-modal-sent-msg {
   font-family: $khmer-body-font;
   font-size: 0.88rem;
   font-weight: 700;
@@ -1793,8 +2229,18 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   margin: 4px 0 0 0;
 }
 
+/* Modal Transition */
+.modal-fade-enter-active, .modal-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-fade-enter-from, .modal-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
 /* ========================================================
-   BOTTOM NAVIGATION BAR (4 Glass Cards)
+   BOTTOM NAVIGATION BAR (4 Glass Cards Matching Photo)
    ======================================================== */
 .bottom-action-nav {
   position: absolute;
@@ -1804,8 +2250,8 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.76);
+  padding: 7px 14px;
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.95);
@@ -1818,7 +2264,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.95);
   display: flex;
   align-items: center;
@@ -1839,7 +2285,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
     background: #ffffff;
     color: #1d4ed8;
     border-color: #93c5fd;
-    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
   }
 
   &:active {
