@@ -204,15 +204,14 @@
                 </svg>
 
                 <!-- Plaque Text -->
-                <span class="btn-khmer-lbl">ចុចកត់ត្រាថ្ងៃកម្មវិធី</span>
-                <span class="btn-en-lbl">Click to Save The Date</span>
+                <span class="btn-khmer-lbl">ចំនួនថ្ងៃរាប់ថយក្រោយ</span>
                 <div class="btn-gold-shimmer"></div>
               </button>
             </div>
 
             <!-- Event Countdown Header Section -->
             <div class="countdown-header-block">
-              <h2 class="countdown-main-kh">ចំនួនថ្ងៃរាប់ថយក្រោយ</h2>
+             
               
               <!-- Exact Matching Filigree Divider -->
               <div class="filigree-divider-wrap">
@@ -1209,6 +1208,30 @@ onMounted(async () => {
     if (el) scrollObserver.observe(el)
   })
 
+  // Scroll-Driven Page Active & Text Animation Observer
+  pageAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('page-active')
+      } else {
+        entry.target.classList.remove('page-active')
+      }
+    })
+  }, {
+    root: scrollContainer.value,
+    threshold: 0.18
+  })
+
+  document.querySelectorAll('.snap-page').forEach(page => {
+    pageAnimationObserver.observe(page)
+  })
+
+  // Ensure first page is active immediately on load
+  const initialCover = document.getElementById('page-invite')
+  if (initialCover) {
+    initialCover.classList.add('page-active')
+  }
+
   // Scroll-Driven Fade-In & Fade-Out Observer for Photos
   const photoFadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1227,11 +1250,14 @@ onMounted(async () => {
   })
 })
 
+let pageAnimationObserver = null
+
 onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (melodyTimer) clearInterval(melodyTimer)
   if (audioCtx) audioCtx.close()
   if (scrollObserver) scrollObserver.disconnect()
+  if (pageAnimationObserver) pageAnimationObserver.disconnect()
 })
 </script>
 
@@ -1240,9 +1266,10 @@ $sapphire-dark: #1e3a5f;
 $sapphire-navy: #15325b;
 $sapphire-blue: #2563eb;
 $gold-primary: #d4af37;
-$gold-light: #fef08a;
-$khmer-title-font: 'Moul', 'Bayon', 'Koulen', serif;
-$khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
+$khmer-title-font: 'Moul', 'Moulpali', 'Bayon', serif;
+$khmer-name-font: 'Suwannaphum', 'Kantumruy Pro', serif;
+$khmer-body-font: 'Kantumruy Pro', 'Suwannaphum', 'Battambang', sans-serif;
+$khmer-script-font: 'Bokor', cursive;
 
 .save-the-date-page {
   width: 100vw;
@@ -1396,6 +1423,39 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-invitation-cover {
   justify-content: flex-start;
+
+  &.page-active {
+    .main-wedding-title {
+      animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+    .parents-grid {
+      animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+    }
+    .honor-invite-title {
+      animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+    }
+    .formal-invitation-text p:nth-child(1) {
+      animation: textRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+    }
+    .formal-invitation-text p:nth-child(2) {
+      animation: textRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+    }
+    .formal-invitation-text p:nth-child(3) {
+      animation: textRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.64s both;
+    }
+    .couple-names-grid {
+      animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.74s both, textShimmerGold 3.5s ease-in-out 1.8s infinite;
+    }
+    .wedding-datetime-section {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.88s both;
+    }
+    .venue-section {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both;
+    }
+    .scroll-down-cue {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 1.12s both;
+    }
+  }
 }
 
 .invitation-content {
@@ -1515,30 +1575,32 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   justify-content: center;
   align-items: baseline;
   gap: 4px;
-  font-family: $khmer-body-font;
+  font-family: $khmer-name-font;
   line-height: 1.35;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
 .role-text {
-  font-size: 0.84rem;
+  font-family: $khmer-name-font;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #1e3a5f;
   white-space: nowrap;
 
   @media (max-width: 380px) {
-    font-size: 0.76rem;
+    font-size: 0.78rem;
   }
 }
 
 .name-text {
-  font-size: 0.84rem;
+  font-family: $khmer-name-font;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #1e3a5f;
   white-space: nowrap;
 
   @media (max-width: 380px) {
-    font-size: 0.76rem;
+    font-size: 0.78rem;
   }
 }
 
@@ -1562,8 +1624,8 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 /* Formal Invitation Text */
 .formal-invitation-text {
   font-family: $khmer-body-font;
-  font-size: 0.76rem;
-  line-height: 1.48;
+  font-size: 0.78rem;
+  line-height: 1.5;
   color: #24416b;
   margin: 6px auto 8px auto;
   padding: 0 6px;
@@ -1577,11 +1639,11 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   }
 
   @media (max-width: 380px) {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
 
   @media (max-height: 700px) {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     line-height: 1.35;
     margin: 2px auto 4px auto;
   }
@@ -1621,19 +1683,20 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 }
 
 .couple-name {
-  font-family: $khmer-title-font;
-  font-size: 1.15rem;
-  font-weight: 400;
+  font-family: $khmer-name-font;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #15325b;
   margin: 0;
   line-height: 1.3;
+  letter-spacing: 0.2px;
 
   @media (max-width: 380px) {
-    font-size: 1.02rem;
+    font-size: 1.1rem;
   }
 
   @media (max-height: 700px) {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -1758,6 +1821,45 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-countdown-page {
   justify-content: flex-start;
+
+  &.page-active {
+    .save-date-button-wrap {
+      animation: textRevealDown 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+    .countdown-main-kh {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+    .filigree-divider-wrap {
+      animation: expandDivider 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+    }
+    .countdown-sub-en {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+    }
+    .countdown-card:nth-of-type(1) {
+      animation: textRevealZoom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
+    }
+    .countdown-card:nth-of-type(2) {
+      animation: textRevealZoom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+    }
+    .countdown-card:nth-of-type(3) {
+      animation: textRevealZoom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
+    }
+    .countdown-card:nth-of-type(4) {
+      animation: textRevealZoom 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
+    }
+    .congratulations-title {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.82s both;
+    }
+    .congratulations-kh {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.92s both;
+    }
+    .photo-frame-royal {
+      animation: textRevealZoom 1s cubic-bezier(0.16, 1, 0.3, 1) 1.02s both;
+    }
+    .scroll-down-cue {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both;
+    }
+  }
 }
 
 .countdown-page-inner {
@@ -2034,6 +2136,26 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-timeline-page {
   justify-content: flex-start;
+
+  &.page-active {
+    .schedule-page-header {
+      animation: textRevealDown 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+    .timeline-vertical-axis {
+      animation: growAxis 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      transform-origin: top center;
+    }
+    .schedule-step-item {
+      &:nth-child(2) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both; }
+      &:nth-child(3) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both; }
+      &:nth-child(4) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both; }
+      &:nth-child(5) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both; }
+      &:nth-child(6) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both; }
+      &:nth-child(7) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both; }
+      &:nth-child(8) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.70s both; }
+      &:nth-child(9) { animation: textRevealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both; }
+    }
+  }
 }
 
 .timeline-page-inner {
@@ -2178,6 +2300,18 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-location-map-page {
   justify-content: flex-start;
+
+  &.page-active {
+    .location-page-header {
+      animation: textRevealDown 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+    .roadmap-canvas-card {
+      animation: textRevealZoom 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+    }
+    .map-qrcode-card {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+    }
+  }
 }
 
 .location-map-inner {
@@ -2532,6 +2666,12 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-gallery-page {
   justify-content: flex-start;
+
+  &.page-active {
+    .gallery-page-header {
+      animation: textRevealDown 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+  }
 }
 
 .gallery-page-inner {
@@ -2895,6 +3035,33 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
    ======================================================== */
 .section-gratitude-page {
   justify-content: center;
+
+  &.page-active {
+    .gratitude-top-emblem {
+      animation: textRevealDown 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+    .gratitude-title-kh {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+    }
+    .gratitude-text-p1 {
+      animation: textRevealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+    .gratitude-text-p2 {
+      animation: textRevealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+    }
+    .gratitude-thanks-line {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+    }
+    .gratitude-filigree-divider {
+      animation: expandDivider 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.64s both;
+    }
+    .gratitude-subtitle-en {
+      animation: textRevealUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.74s both;
+    }
+    .wishes-open-btn {
+      animation: textRevealZoom 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.86s both;
+    }
+  }
 }
 
 .gratitude-page-inner {

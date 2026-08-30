@@ -508,6 +508,7 @@ function handleOpenInvitation() {
     0 0 16px rgba(255, 255, 255, 0.95);
   filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
   transform: translateZ(0);
+  animation: textRevealDown 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 
   @media (max-width: 380px) {
     font-size: 1.38rem;
@@ -531,6 +532,7 @@ function handleOpenInvitation() {
     0 0 12px rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.95));
   transform: translateZ(0);
+  animation: textRevealUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 
   @media (max-width: 380px) {
     font-size: 1.05rem;
@@ -550,11 +552,12 @@ function handleOpenInvitation() {
   align-items: center;
   gap: 3px;
   margin-bottom: 8px;
+  animation: textRevealUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
 .guest-label {
-  font-family: 'Kantumruy Pro', var(--font-body);
-  font-size: 1.08rem;
+  font-family: 'Suwannaphum', 'Kantumruy Pro', var(--font-body);
+  font-size: 1.12rem;
   font-weight: 700;
   color: #0a2249;
   letter-spacing: 0.5px;
@@ -570,9 +573,9 @@ function handleOpenInvitation() {
 }
 
 .guest-name {
-  font-family: 'Kantumruy Pro', var(--font-body);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-family: 'Suwannaphum', 'Kantumruy Pro', var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
   color: #1e3a8a;
   padding: 1px 6px;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
@@ -614,7 +617,7 @@ function handleOpenInvitation() {
   outline: none;
   overflow: visible;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: pulseCartouche 3.5s infinite;
+  animation: textRevealZoom 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s both, pulseCartouche 3.5s 1.75s infinite;
 }
 
 .open-invitation-btn:hover {
