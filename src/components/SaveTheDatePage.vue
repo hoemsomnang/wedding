@@ -1404,7 +1404,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16vh 16px 14px 16px;
+  padding: 24vh 16px 14px 16px;
   box-sizing: border-box;
   text-align: center;
   margin: 0 auto;
@@ -1414,7 +1414,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   }
 
   @media (max-height: 650px) {
-    padding-top: 11vh;
+    padding-top: 13vh;
   }
 }
 
@@ -1476,11 +1476,12 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  max-width: 390px;
-  gap: 10px;
+  max-width: 380px;
+  gap: 12px;
   margin: 4px auto 6px auto;
-  padding: 0 4px;
+  padding: 0 6px;
   justify-content: center;
+  justify-items: center;
 
   @media (max-height: 700px) {
     margin: 2px auto 4px auto;
@@ -1491,22 +1492,27 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 .parent-col {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 3px;
 
   &.left-col {
-    text-align: left;
-    padding-left: 6px;
+    text-align: center;
+    align-items: center;
+    padding-left: 0;
   }
 
   &.right-col {
-    text-align: left;
-    padding-left: 6px;
+    text-align: center;
+    align-items: center;
+    padding-left: 0;
   }
 }
 
 .parent-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
   align-items: baseline;
   gap: 4px;
   font-family: $khmer-body-font;
@@ -1542,7 +1548,8 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   font-size: 0.94rem;
   font-weight: 400;
   color: #15325b;
-  margin: 6px 0 4px 0;
+  margin: 6px auto 4px auto;
+  text-align: center;
   line-height: 1.4;
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
 
@@ -1556,11 +1563,13 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 .formal-invitation-text {
   font-family: $khmer-body-font;
   font-size: 0.76rem;
-  line-height: 1.45;
+  line-height: 1.48;
   color: #24416b;
-  margin: 4px 0 8px 0;
-  padding: 0 4px;
+  margin: 6px auto 8px auto;
+  padding: 0 6px;
+  max-width: 400px;
   font-weight: 500;
+  text-align: center;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95);
 
   p {
@@ -1574,7 +1583,7 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   @media (max-height: 700px) {
     font-size: 0.68rem;
     line-height: 1.35;
-    margin: 2px 0 4px 0;
+    margin: 2px auto 4px auto;
   }
 }
 
@@ -1583,11 +1592,13 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
+  max-width: 380px;
   gap: 14px;
-  margin: 6px 0 8px 0;
+  margin: 6px auto 8px auto;
+  justify-content: center;
 
   @media (max-height: 700px) {
-    margin: 3px 0 4px 0;
+    margin: 3px auto 4px auto;
   }
 }
 
