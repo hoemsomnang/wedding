@@ -48,15 +48,6 @@
         <section class="snap-page section-invitation-cover" id="page-invite">
           <div class="invitation-content">
             
-            <!-- Monogram Crest -->
-            <div class="monogram-section">
-              <img
-                :src="monogramUrl"
-                alt="Monogram Crest M"
-                class="monogram-img"
-              />
-            </div>
-
             <!-- Main Wedding Ceremony Title -->
             <h1 class="main-wedding-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
 
@@ -1105,52 +1096,6 @@ function toggleMusic() {
   }
 }
 
-// Process transparent background for the monogram crest safely without freezing CPU
-function processTransparentImage(src) {
-  try {
-    const img = new window.Image()
-    img.crossOrigin = 'anonymous'
-    img.src = src
-    img.onload = () => {
-      try {
-        const canvas = document.createElement('canvas')
-        const maxDim = 320 // Cap resolution to prevent high-res mobile freeze
-        const ratio = (img.naturalWidth || 400) / (img.naturalHeight || 400)
-        canvas.width = maxDim
-        canvas.height = Math.round(maxDim / ratio)
-        const ctx = canvas.getContext('2d', { willReadFrequently: true })
-        if (!ctx) return
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        
-        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-        const data = imgData.data
-        
-        for (let i = 0; i < data.length; i += 4) {
-          const r = data[i]
-          const g = data[i + 1]
-          const b = data[i + 2]
-          const brightness = (r + g + b) / 3
-          
-          if (brightness > 235 && r > 220 && g > 220 && b > 220) {
-            data[i + 3] = 0
-          } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
-            const factor = 1 - (brightness - 205) / (235 - 205)
-            data[i + 3] = Math.round(data[i + 3] * factor)
-          }
-        }
-        
-        ctx.putImageData(imgData, 0, 0)
-        monogramUrl.value = canvas.toDataURL('image/png')
-      } catch (err) {
-        // Fallback to original image if canvas throws
-        monogramUrl.value = src
-      }
-    }
-  } catch (err) {
-    monogramUrl.value = src
-  }
-}
-
 // Live Countdown Timer to 13 March 2027
 const targetDate = new Date('2027-03-13T17:00:00')
 const countdown = ref({ days: '00', hours: '00', minutes: '00', seconds: '00' })
@@ -1216,7 +1161,6 @@ const addToCalendar = handleSaveDate
 let scrollObserver = null
 
 onMounted(async () => {
-  processTransparentImage(rawMonogramUrl)
   updateCountdown()
   timer = setInterval(updateCountdown, 1000)
 
@@ -1488,8 +1432,10 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   max-height: 100%;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(21, 50, 91, 0.25)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 4px 8px rgba(21, 50, 91, 0.25));
   animation: gentleFloat 4s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 @keyframes gentleFloat {
@@ -2821,25 +2767,23 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   }
 }
 
-/* Scroll Fade-In and Fade-Out Animation System */
+/* Scroll Fade-In and Entrance Animation System (GPU-accelerated) */
 .scroll-fade-item {
-  opacity: 0.15;
-  transform: translateY(24px) scale(0.96);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.5s ease;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
+  content-visibility: auto;
 
   &.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
+    transform: translate3d(0, 0, 0);
   }
 
   &.is-hidden {
-    opacity: 0.2;
-    transform: translateY(-16px) scale(0.96);
-    filter: blur(1px);
+    opacity: 0.4;
+    transform: translate3d(0, -8px, 0);
   }
 }
 

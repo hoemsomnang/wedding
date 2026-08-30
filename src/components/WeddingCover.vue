@@ -20,18 +20,8 @@
 
       <!-- Main Content Area -->
       <div class="card-content" :class="{ 'is-opening': isOpening }">
-        <!-- Top Monogram Section (Floating directly on sky, no circular container) -->
-        <div class="monogram-section">
-          <div class="monogram-ambient-glow"></div>
-          <div class="monogram-wrapper">
-            <img
-              :src="monogramUrl"
-              alt="Royal Sapphire Monogram M"
-              class="monogram-pure-img"
-            />
-            <div class="monogram-shimmer"></div>
-          </div>
-        </div>
+        <!-- Top Sky Spacer -->
+        <div class="top-cover-spacer"></div>
 
         <!-- Main Khmer Titles -->
         <div class="titles-section">
@@ -111,55 +101,6 @@ const emit = defineEmits(['open-invitation'])
 const cardRef = ref(null)
 const monogramUrl = ref(rawMonogramUrl)
 const isOpening = ref(false)
-
-// Cut out pure white background to make a pristine transparent PNG safely without freezing mobile CPU
-function processTransparentImage(src) {
-  try {
-    const img = new Image()
-    img.crossOrigin = 'anonymous'
-    img.src = src
-    img.onload = () => {
-      try {
-        const canvas = document.createElement('canvas')
-        const maxDim = 320
-        const ratio = (img.naturalWidth || 400) / (img.naturalHeight || 400)
-        canvas.width = maxDim
-        canvas.height = Math.round(maxDim / ratio)
-        const ctx = canvas.getContext('2d', { willReadFrequently: true })
-        if (!ctx) return
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-        
-        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-        const data = imgData.data
-        
-        for (let i = 0; i < data.length; i += 4) {
-          const r = data[i]
-          const g = data[i + 1]
-          const b = data[i + 2]
-          const brightness = (r + g + b) / 3
-          
-          if (brightness > 235 && r > 220 && g > 220 && b > 220) {
-            data[i + 3] = 0
-          } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
-            const factor = 1 - (brightness - 205) / (235 - 205)
-            data[i + 3] = Math.round(data[i + 3] * factor)
-          }
-        }
-        
-        ctx.putImageData(imgData, 0, 0)
-        monogramUrl.value = canvas.toDataURL('image/png')
-      } catch (err) {
-        monogramUrl.value = src
-      }
-    }
-  } catch (err) {
-    monogramUrl.value = src
-  }
-}
-
-onMounted(() => {
-  processTransparentImage(rawMonogramUrl)
-})
 
 function triggerConfetti() {
   try {
@@ -494,8 +435,10 @@ function handleOpenInvitation() {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  mix-blend-mode: multiply;
   filter: drop-shadow(0 6px 12px rgba(15, 35, 80, 0.45));
   transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 .monogram-wrapper:hover .monogram-pure-img {
@@ -524,49 +467,60 @@ function handleOpenInvitation() {
   30%, 100% { left: 200%; }
 }
 
-/* Titles Section (Positioned down at the red line in the open bright sky) */
+.top-cover-spacer {
+  height: 22vh;
+  width: 100%;
+
+  @media (max-height: 700px) {
+    height: 18vh;
+  }
+
+  @media (max-height: 600px) {
+    height: 15vh;
+  }
+}
+
+/* Titles Section (Positioned down in the open sky matching Page 2) */
 .titles-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 4.5vh;
+  gap: 8px;
+  margin-top: 0;
   padding: 0 16px;
+  width: 100%;
 }
 
 .main-title {
-  font-family: var(--font-moul);
-  font-size: 1.58rem;
+  font-family: 'Moul', 'Bayon', 'Koulen', serif;
+  font-size: 1.55rem;
   font-weight: 400;
-  line-height: 1.45;
-  color: #0e306e;
-  background: linear-gradient(180deg, #0a2350 0%, #164696 45%, #2563eb 75%, #0e306e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: 
-    drop-shadow(0 1px 0 #ffffff)
-    drop-shadow(0 -0.8px 0 rgba(255, 255, 255, 0.9))
-    drop-shadow(0.8px 0 0 rgba(255, 255, 255, 0.8))
-    drop-shadow(-0.8px 0 0 rgba(255, 255, 255, 0.8))
-    drop-shadow(0 4px 10px rgba(10, 35, 80, 0.45));
+  line-height: 1.4;
+  color: #15325b;
   letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9));
   transform: translateZ(0);
+
+  @media (max-width: 380px) {
+    font-size: 1.35rem;
+  }
 }
 
 .sub-title {
-  font-family: var(--font-moul);
-  font-size: 1.18rem;
+  font-family: 'Moul', 'Bayon', 'Koulen', serif;
+  font-size: 1.15rem;
   font-weight: 400;
-  line-height: 1.45;
-  color: #11387e;
-  background: linear-gradient(180deg, #0c2b60 0%, #1b4ea5 55%, #2563eb 85%, #0f326e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: 
-    drop-shadow(0 1px 0 #ffffff)
-    drop-shadow(0 3px 6px rgba(10, 35, 80, 0.38));
+  line-height: 1.4;
+  color: #15325b;
   letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9));
   transform: translateZ(0);
+
+  @media (max-width: 380px) {
+    font-size: 1.02rem;
+  }
 }
 
 .center-spacer {

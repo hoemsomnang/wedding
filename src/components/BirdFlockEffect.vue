@@ -3,15 +3,15 @@
     <!-- Bird 1: Lead Forefront Glider -->
     <div class="bird-container bird-container--1">
       <div class="bird bird--lead">
-        <LottieBluebird :speed="1.25" :flipForward="true" />
+        <LottieBluebird :speed="1.2" :flipForward="true" />
         <div class="bird-stardust"></div>
       </div>
     </div>
 
-    <!-- Bird 2: Close Follower / Wingmate -->
+    <!-- Bird 2: Close Follower -->
     <div class="bird-container bird-container--2">
       <div class="bird bird--follower">
-        <LottieBluebird :speed="1.15" :flipForward="true" />
+        <LottieBluebird :speed="1.05" :flipForward="true" />
         <div class="bird-stardust"></div>
       </div>
     </div>
@@ -19,39 +19,7 @@
     <!-- Bird 3: High Sky Soarer -->
     <div class="bird-container bird-container--3">
       <div class="bird bird--high">
-        <LottieBluebird :speed="1.0" :flipForward="true" />
-        <div class="bird-stardust"></div>
-      </div>
-    </div>
-
-    <!-- Bird 4: Fast Swooping Swallow -->
-    <div class="bird-container bird-container--4">
-      <div class="bird bird--fast">
-        <LottieBluebird :speed="1.35" :flipForward="true" />
-        <div class="bird-stardust"></div>
-      </div>
-    </div>
-
-    <!-- Bird 5: Mid-Sky Crossing Glider -->
-    <div class="bird-container bird-container--5">
-      <div class="bird bird--mid">
-        <LottieBluebird :speed="1.1" :flipForward="true" />
-        <div class="bird-stardust"></div>
-      </div>
-    </div>
-
-    <!-- Bird 6: Distant Soft Soarer -->
-    <div class="bird-container bird-container--6">
-      <div class="bird bird--distant">
-        <LottieBluebird :speed="0.95" :flipForward="true" />
-        <div class="bird-stardust"></div>
-      </div>
-    </div>
-
-    <!-- Bird 7: Horizon Wave Leader -->
-    <div class="bird-container bird-container--7">
-      <div class="bird bird--horizon">
-        <LottieBluebird :speed="1.2" :flipForward="true" />
+        <LottieBluebird :speed="1.15" :flipForward="true" />
         <div class="bird-stardust"></div>
       </div>
     </div>
