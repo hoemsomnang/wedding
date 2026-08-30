@@ -966,12 +966,19 @@ const qrCodeDataUrl = ref('')
 const googleMapUrl = "https://www.google.com/maps/place/13%C2%B029'22.0%22N+102%C2%B022'05.2%22E/@13.4851043,102.3649696,16z/data=!4m4!3m3!8m2!3d13.4894418!4d102.3681016!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
 
 function openGoogleMaps() {
-  playChimeSound()
-  window.open(googleMapUrl, '_blank')
+  try {
+    playChimeSound()
+  } catch (e) {}
+  const targetWin = window.open(googleMapUrl, '_blank', 'noopener,noreferrer')
+  if (!targetWin || targetWin.closed || typeof targetWin.closed === 'undefined') {
+    window.location.href = googleMapUrl
+  }
 }
 
 function toggleWishesModal() {
-  playChimeSound()
+  try {
+    playChimeSound()
+  } catch (e) {}
   showWishesModal.value = !showWishesModal.value
 }
 
@@ -998,21 +1005,25 @@ const weddingHarpNotes = [
 const bassNotes = [174.61, 130.81, 146.83, 116.54, 174.61, 196.00, 261.63]
 
 function initAudioContext() {
-  if (!audioCtx) {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext
-    if (AudioContextClass) {
-      audioCtx = new AudioContextClass()
+  try {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass()
+      }
     }
-  }
-  if (audioCtx && audioCtx.state === 'suspended') {
-    audioCtx.resume()
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {})
+    }
+  } catch (e) {
+    // Fail silently on restricted mobile browsers
   }
 }
 
 // Gentle crystal chime note
 function playHarpNote(freq, type = 'sine', duration = 1.4, gainValue = 0.08) {
-  if (!audioCtx || audioCtx.state !== 'running') return
   try {
+    if (!audioCtx || audioCtx.state !== 'running') return
     const osc = audioCtx.createOscillator()
     const gain = audioCtx.createGain()
     const filter = audioCtx.createBiquadFilter()
@@ -1035,45 +1046,55 @@ function playHarpNote(freq, type = 'sine', duration = 1.4, gainValue = 0.08) {
     osc.start()
     osc.stop(audioCtx.currentTime + duration)
   } catch (e) {
-    console.error('Audio play error', e)
+    // Fail silently so it never interrupts clicks or scrolls
   }
 }
 
 // UI Click Chime Sound Effect
 function playChimeSound() {
-  initAudioContext()
-  if (!audioCtx) return
-  playHarpNote(880, 'sine', 0.6, 0.07)
-  setTimeout(() => playHarpNote(1318.51, 'triangle', 0.8, 0.05), 80)
+  try {
+    initAudioContext()
+    if (!audioCtx) return
+    playHarpNote(880, 'sine', 0.6, 0.07)
+    setTimeout(() => {
+      try {
+        playHarpNote(1318.51, 'triangle', 0.8, 0.05)
+      } catch (e) {}
+    }, 80)
+  } catch (e) {}
 }
 
 function startMelodyLoop() {
   if (melodyTimer) clearInterval(melodyTimer)
   
   melodyTimer = setInterval(() => {
-    if (!isPlaying.value) return
-    const freq = weddingHarpNotes[noteIndex % weddingHarpNotes.length]
-    
-    // Primary harp bell
-    playHarpNote(freq, 'sine', 1.8, 0.085)
-    
-    // Golden overtone shimmer
-    if (noteIndex % 2 === 0) {
-      playHarpNote(freq * 1.5, 'triangle', 1.2, 0.035)
-    }
+    try {
+      if (!isPlaying.value) return
+      const freq = weddingHarpNotes[noteIndex % weddingHarpNotes.length]
+      
+      // Primary harp bell
+      playHarpNote(freq, 'sine', 1.8, 0.085)
+      
+      // Golden overtone shimmer
+      if (noteIndex % 2 === 0) {
+        playHarpNote(freq * 1.5, 'triangle', 1.2, 0.035)
+      }
 
-    // Warm deep bass note every 4 beats
-    if (noteIndex % 4 === 0) {
-      const bassFreq = bassNotes[(noteIndex / 4) % bassNotes.length]
-      playHarpNote(bassFreq, 'sine', 2.4, 0.06)
-    }
+      // Warm deep bass note every 4 beats
+      if (noteIndex % 4 === 0) {
+        const bassFreq = bassNotes[(noteIndex / 4) % bassNotes.length]
+        playHarpNote(bassFreq, 'sine', 2.4, 0.06)
+      }
 
-    noteIndex++
+      noteIndex++
+    } catch (e) {}
   }, 500)
 }
 
 function toggleMusic() {
-  initAudioContext()
+  try {
+    initAudioContext()
+  } catch (e) {}
   isPlaying.value = !isPlaying.value
 
   if (isPlaying.value) {
@@ -1084,36 +1105,49 @@ function toggleMusic() {
   }
 }
 
-// Process transparent background for the monogram crest
+// Process transparent background for the monogram crest safely without freezing CPU
 function processTransparentImage(src) {
-  const img = new window.Image()
-  img.src = src
-  img.onload = () => {
-    const canvas = document.createElement('canvas')
-    canvas.width = img.naturalWidth || 600
-    canvas.height = img.naturalHeight || 600
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    const data = imgData.data
-    
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i]
-      const g = data[i + 1]
-      const b = data[i + 2]
-      const brightness = (r + g + b) / 3
-      
-      if (brightness > 235 && r > 220 && g > 220 && b > 220) {
-        data[i + 3] = 0
-      } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
-        const factor = 1 - (brightness - 205) / (235 - 205)
-        data[i + 3] = Math.round(data[i + 3] * factor)
+  try {
+    const img = new window.Image()
+    img.crossOrigin = 'anonymous'
+    img.src = src
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas')
+        const maxDim = 320 // Cap resolution to prevent high-res mobile freeze
+        const ratio = (img.naturalWidth || 400) / (img.naturalHeight || 400)
+        canvas.width = maxDim
+        canvas.height = Math.round(maxDim / ratio)
+        const ctx = canvas.getContext('2d', { willReadFrequently: true })
+        if (!ctx) return
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        const data = imgData.data
+        
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i]
+          const g = data[i + 1]
+          const b = data[i + 2]
+          const brightness = (r + g + b) / 3
+          
+          if (brightness > 235 && r > 220 && g > 220 && b > 220) {
+            data[i + 3] = 0
+          } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
+            const factor = 1 - (brightness - 205) / (235 - 205)
+            data[i + 3] = Math.round(data[i + 3] * factor)
+          }
+        }
+        
+        ctx.putImageData(imgData, 0, 0)
+        monogramUrl.value = canvas.toDataURL('image/png')
+      } catch (err) {
+        // Fallback to original image if canvas throws
+        monogramUrl.value = src
       }
     }
-    
-    ctx.putImageData(imgData, 0, 0)
-    monogramUrl.value = canvas.toDataURL('image/png')
+  } catch (err) {
+    monogramUrl.value = src
   }
 }
 
@@ -1141,18 +1175,26 @@ function updateCountdown() {
 }
 
 function handleSaveDate() {
-  playChimeSound()
+  try {
+    playChimeSound()
+  } catch (e) {}
   const calendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Ceremony+%7C+%E1%9E%9F%E1%9E%B7%E1%9E%9A%E1%9E%B8%E1%9E%98%E1%9E%84%E1%9F%8D%E1%9E%82%E1%9E%9D%E1%9E%96%E1%9E%B6%E1%9E%9E%E1%9E%B7%E1%9E%96%E1%9E%B6%E1%9E%9E&dates=20270313T100000Z/20270313T150000Z&details=Wedding+Invitation+Celebration&location=Century+Bright+Restaurant+Phnom+Penh'
-  window.open(calendarUrl, '_blank')
+  const targetWin = window.open(calendarUrl, '_blank', 'noopener,noreferrer')
+  if (!targetWin || targetWin.closed || typeof targetWin.closed === 'undefined') {
+    window.location.href = calendarUrl
+  }
 }
 
 function scrollToPage(pageId) {
-  playChimeSound()
+  try {
+    playChimeSound()
+  } catch (e) {}
   if (pageId === 'page-invite') activeTab.value = 'invite'
   if (pageId === 'page-countdown') activeTab.value = 'countdown'
   if (pageId === 'page-timeline') activeTab.value = 'timeline'
   if (pageId === 'page-venue') activeTab.value = 'venue'
   if (pageId === 'page-gallery') activeTab.value = 'gallery'
+  if (pageId === 'page-gratitude') activeTab.value = 'gallery'
 
   const el = document.getElementById(pageId)
   if (el) {

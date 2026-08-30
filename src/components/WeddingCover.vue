@@ -112,36 +112,48 @@ const cardRef = ref(null)
 const monogramUrl = ref(rawMonogramUrl)
 const isOpening = ref(false)
 
-// Cut out pure white background to make a pristine transparent PNG
+// Cut out pure white background to make a pristine transparent PNG safely without freezing mobile CPU
 function processTransparentImage(src) {
-  const img = new Image()
-  img.src = src
-  img.onload = () => {
-    const canvas = document.createElement('canvas')
-    canvas.width = img.naturalWidth || 600
-    canvas.height = img.naturalHeight || 600
-    const ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-    const data = imgData.data
-    
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i]
-      const g = data[i + 1]
-      const b = data[i + 2]
-      const brightness = (r + g + b) / 3
-      
-      if (brightness > 235 && r > 220 && g > 220 && b > 220) {
-        data[i + 3] = 0
-      } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
-        const factor = 1 - (brightness - 205) / (235 - 205)
-        data[i + 3] = Math.round(data[i + 3] * factor)
+  try {
+    const img = new Image()
+    img.crossOrigin = 'anonymous'
+    img.src = src
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas')
+        const maxDim = 320
+        const ratio = (img.naturalWidth || 400) / (img.naturalHeight || 400)
+        canvas.width = maxDim
+        canvas.height = Math.round(maxDim / ratio)
+        const ctx = canvas.getContext('2d', { willReadFrequently: true })
+        if (!ctx) return
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+        const data = imgData.data
+        
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i]
+          const g = data[i + 1]
+          const b = data[i + 2]
+          const brightness = (r + g + b) / 3
+          
+          if (brightness > 235 && r > 220 && g > 220 && b > 220) {
+            data[i + 3] = 0
+          } else if (brightness > 205 && r > 195 && g > 195 && b > 195) {
+            const factor = 1 - (brightness - 205) / (235 - 205)
+            data[i + 3] = Math.round(data[i + 3] * factor)
+          }
+        }
+        
+        ctx.putImageData(imgData, 0, 0)
+        monogramUrl.value = canvas.toDataURL('image/png')
+      } catch (err) {
+        monogramUrl.value = src
       }
     }
-    
-    ctx.putImageData(imgData, 0, 0)
-    monogramUrl.value = canvas.toDataURL('image/png')
+  } catch (err) {
+    monogramUrl.value = src
   }
 }
 
