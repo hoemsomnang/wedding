@@ -647,7 +647,207 @@
           </div>
         </section>
 
+        <!-- ==========================================
+             PAGE 5: PHOTO GALLERY (Exact Match to Reference UI)
+             ========================================== -->
+        <section class="snap-page section-gallery-page" id="page-gallery">
+          <div class="gallery-page-inner">
+            
+            <!-- Gallery Header with Left Leader Line -->
+            <div class="gallery-page-header">
+              <span class="header-left-line"></span>
+              <h2 class="gallery-title-kh-en">
+                <span class="kh-part">វិចិត្រសាល</span>
+                <span class="slash-sep">/</span>
+                <span class="en-part">PHOTO GALLERY</span>
+              </h2>
+            </div>
+
+            <!-- Gallery Collage Grid with Scroll Fade-In & Fade-Out -->
+            <div class="gallery-grid-flow">
+              
+              <!-- 1. Top Hero Landscape Photo Card -->
+              <div class="gallery-card hero-card scroll-fade-item" @click="openLightbox(galleryHeroImg, 'ពិធីសិរីមង្គលអាពាហ៍ពិពាហ៍')">
+                <div class="photo-card-frame">
+                  <img :src="galleryHeroImg" alt="Wedding Hero Couple" class="gallery-photo-img" />
+                  <div class="photo-card-sheen"></div>
+                  <div class="photo-card-badge">
+                    <Sparkles :size="12" class="sparkle-icon" /> រូបភាពពិសេស
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Row 2: 2-Column Medium Photos -->
+              <div class="gallery-row-2col scroll-fade-item">
+                <div class="gallery-card sub-card" @click="openLightbox(galleryStandingImg, 'អនុស្សាវរីយ៍គូស្នេហ៍')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryStandingImg" alt="Wedding Standing Couple" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+                <div class="gallery-card sub-card" @click="openLightbox(couplePhotoUrl, 'ស្នាមញញឹមនៃក្តីស្រលាញ់')">
+                  <div class="photo-card-frame">
+                    <img :src="couplePhotoUrl" alt="Wedding Couple Portrait" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3. Row 3: 3-Column Portrait Photos -->
+              <div class="gallery-row-3col scroll-fade-item">
+                <div class="gallery-card portrait-card" @click="openLightbox(galleryStandingImg, 'សិរីមង្គលអាពាហ៍ពិពាហ៍')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryStandingImg" alt="Wedding Portrait Standing" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+                <div class="gallery-card portrait-card" @click="openLightbox(galleryHeroImg, 'សុភមង្គលគូស្នេហ៍')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryHeroImg" alt="Wedding Portrait Anjali" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+                <div class="gallery-card portrait-card" @click="openLightbox(galleryArchImg, 'ស្បថសច្ចានៃក្តីស្រលាញ់')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryArchImg" alt="Wedding Portrait Arch" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. Row 4: 2-Column Arched Window Frames -->
+              <div class="gallery-row-arch-2col scroll-fade-item">
+                <div class="gallery-card arch-card" @click="openLightbox(galleryArchImg, 'ស្នេហ៍និរន្តរ៍')">
+                  <div class="photo-arch-frame">
+                    <img :src="galleryArchImg" alt="Wedding Romantic Arch" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+                <div class="gallery-card arch-card" @click="openLightbox(galleryArchImg, 'ពេលវេលាដ៏មានន័យ')">
+                  <div class="photo-arch-frame monochrome-tone">
+                    <img :src="galleryArchImg" alt="Wedding Romantic Arch Monotone" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Row 5 (NEW): Fine Art Rings & Garden Stroll -->
+              <div class="gallery-row-2col scroll-fade-item">
+                <div class="gallery-card sub-card" @click="openLightbox(galleryRingsImg, 'ចិញ្ចៀនមង្គលការ & ផ្កាឈូកស')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryRingsImg" alt="Wedding Rings and Lotus" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+                <div class="gallery-card sub-card" @click="openLightbox(galleryGardenImg, 'ដំណើរជីវិតរួមគ្នា')">
+                  <div class="photo-card-frame">
+                    <img :src="galleryGardenImg" alt="Royal Garden Wedding Stroll" class="gallery-photo-img fit-cover" />
+                    <div class="photo-card-sheen"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 6. Row 6 (NEW): Horizontal Memory Reel Strip -->
+              <div class="gallery-reel-section scroll-fade-item">
+                <div class="reel-header-badge">
+                  <span class="reel-label-kh">ផ្ទាំងរូបភាពអនុស្សាវរីយ៍បន្ថែម</span>
+                </div>
+                <div class="gallery-horizontal-reel">
+                  <div class="reel-card" @click="openLightbox(galleryGardenImg, 'សួនស្នេហ៍សុភមង្គល')">
+                    <img :src="galleryGardenImg" alt="Memory 1" class="reel-img" />
+                  </div>
+                  <div class="reel-card" @click="openLightbox(galleryHeroImg, 'ពិធីមង្គលការ')">
+                    <img :src="galleryHeroImg" alt="Memory 2" class="reel-img" />
+                  </div>
+                  <div class="reel-card" @click="openLightbox(galleryStandingImg, 'សម្លៀកបំពាក់ប្រពៃណីខ្មែរ')">
+                    <img :src="galleryStandingImg" alt="Memory 3" class="reel-img" />
+                  </div>
+                  <div class="reel-card" @click="openLightbox(galleryRingsImg, 'ចិញ្ចៀនអាពាហ៍ពិពាហ៍')">
+                    <img :src="galleryRingsImg" alt="Memory 4" class="reel-img" />
+                  </div>
+                  <div class="reel-card" @click="openLightbox(galleryArchImg, 'ស្បថសច្ចានៃក្តីស្រលាញ់')">
+                    <img :src="galleryArchImg" alt="Memory 5" class="reel-img" />
+                  </div>
+                  <div class="reel-card" @click="openLightbox(couplePhotoUrl, 'អនុស្សាវរីយ៍គូស្នេហ៍')">
+                    <img :src="couplePhotoUrl" alt="Memory 6" class="reel-img" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Spacer before fixed bottom navigation bar -->
+            <div class="gallery-bottom-spacer"></div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================
+             PAGE 6: OUR GRATITUDE (សេចក្តីថ្លែងអំណរគុណ - Exact Match to Photo)
+             ========================================== -->
+        <section class="snap-page section-gratitude-page" id="page-gratitude">
+          <div class="gratitude-page-inner">
+            
+            <div class="gratitude-card-glass">
+              <!-- Top Royal Sparkle Emblem -->
+              <div class="gratitude-top-emblem">
+                <span class="emblem-sparkle">✦</span>
+              </div>
+
+              <!-- Main Khmer Title -->
+              <h2 class="gratitude-title-kh">សេចក្តីថ្លែងអំណរគុណ</h2>
+
+              <!-- Body Paragraph 1 -->
+              <p class="gratitude-text-p1">
+                យើងខ្ញុំជាមាតាបិតានៃ <strong>កូនប្រុស-កូនស្រី</strong><br />
+                សូមគោរពថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅបំផុតចំពោះ<br />
+                ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា ដែលបានអញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយសក្នុង ពិធីមង្គលអាពាហ៍ពិពាហ៍ កូនប្រុស-កូនស្រី យើងខ្ញុំ។
+              </p>
+
+              <!-- Body Paragraph 2 -->
+              <p class="gratitude-text-p2">
+                យើងខ្ញុំសូមគោរពសម្តែងនូវការរំភើបចិត្តខ្ពង់ខ្ពស់បំផុតជូន ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា និងភ្ញៀវកិត្តិយស សូមទទួលបាននូវពរទាំងបួនប្រការគឺ <strong>អាយុ វណ្ណៈ សុខៈ ពលៈ</strong> កុំបីឃ្លៀងឃ្លាតឡើយ។
+              </p>
+
+              <!-- Final Thank You Line -->
+              <p class="gratitude-thanks-line">សូមអរគុណ !</p>
+
+              <!-- Ornate Filigree Divider (Matching Reference Photo) -->
+              <div class="gratitude-filigree-divider">
+                <svg viewBox="0 0 200 16" class="gratitude-divider-svg" fill="none">
+                  <line x1="10" y1="8" x2="78" y2="8" stroke="#15325b" stroke-width="1.2" stroke-linecap="round" />
+                  <circle cx="85" cy="8" r="2.2" fill="#c29a4b" />
+                  <!-- Center Diamond Knot -->
+                  <path d="M 100 2 L 106 8 L 100 14 L 94 8 Z" fill="#15325b" stroke="#c29a4b" stroke-width="0.8" />
+                  <circle cx="100" cy="8" r="1.5" fill="#fef08a" />
+                  <circle cx="115" cy="8" r="2.2" fill="#c29a4b" />
+                  <line x1="122" y1="8" x2="190" y2="8" stroke="#15325b" stroke-width="1.2" stroke-linecap="round" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Bottom Spacer before fixed nav -->
+            <div class="gratitude-bottom-spacer"></div>
+
+          </div>
+        </section>
+
       </div>
+
+      <!-- ========================================================
+           INTERACTIVE LIGHTBOX MODAL PREVIEW
+           ======================================================== -->
+      <transition name="lightbox-zoom">
+        <div v-if="activeLightboxImg" class="lightbox-backdrop" @click.self="closeLightbox">
+          <div class="lightbox-content-box">
+            <button class="lightbox-close-btn" @click="closeLightbox" aria-label="Close Lightbox">
+              <X :size="24" />
+            </button>
+            <img :src="activeLightboxImg" :alt="activeLightboxTitle" class="lightbox-zoom-img" />
+            <p v-if="activeLightboxTitle" class="lightbox-caption">{{ activeLightboxTitle }}</p>
+          </div>
+        </div>
+      </transition>
 
       <!-- ========================================================
            GUEST WISHES SLIDE-UP MODAL (When 4th nav tab clicked)
@@ -706,9 +906,9 @@
         </button>
         <button
           class="nav-action-btn"
-          :class="{ active: activeTab === 'countdown' }"
-          @click="scrollToPage('page-countdown')"
-          title="រូបថតគូស្នេហ៍ (Couple Showcase)"
+          :class="{ active: activeTab === 'gallery' }"
+          @click="scrollToPage('page-gallery')"
+          title="វិចិត្រសាល (Photo Gallery)"
         >
           <Image :size="22" stroke-width="1.8" />
         </button>
@@ -734,13 +934,33 @@ import rawMonogramUrl from '../assets/sapphire_m_crest_pure.jpg'
 import invitationBgUrl from '../assets/background2.jpg'
 import couplePhotoUrl from '../assets/couple_portrait.jpg'
 import roadmapMapSvgUrl from '../assets/wedding_roadmap_map.svg'
-import { CalendarDays, MapPin, Image, MessageCircle, ChevronDown, ExternalLink, X, Send } from 'lucide-vue-next'
+import galleryHeroImg from '../assets/gallery_hero.jpg'
+import galleryStandingImg from '../assets/gallery_standing.jpg'
+import galleryArchImg from '../assets/gallery_arch.jpg'
+import galleryRingsImg from '../assets/gallery_rings.jpg'
+import galleryGardenImg from '../assets/gallery_garden.jpg'
+import { CalendarDays, MapPin, Image, MessageCircle, ChevronDown, ExternalLink, X, Send, Sparkles } from 'lucide-vue-next'
 
 const monogramUrl = ref(rawMonogramUrl)
 const isPlaying = ref(false)
 const scrollContainer = ref(null)
 const activeTab = ref('invite')
 const showWishesModal = ref(false)
+
+// Lightbox modal state
+const activeLightboxImg = ref(null)
+const activeLightboxTitle = ref('')
+
+function openLightbox(img, title) {
+  playChimeSound()
+  activeLightboxImg.value = img
+  activeLightboxTitle.value = title
+}
+
+function closeLightbox() {
+  playChimeSound()
+  activeLightboxImg.value = null
+}
 
 const qrCodeDataUrl = ref('')
 const googleMapUrl = "https://www.google.com/maps/place/13%C2%B029'22.0%22N+102%C2%B022'05.2%22E/@13.4851043,102.3649696,16z/data=!4m4!3m3!8m2!3d13.4894418!4d102.3681016!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D"
@@ -932,6 +1152,7 @@ function scrollToPage(pageId) {
   if (pageId === 'page-countdown') activeTab.value = 'countdown'
   if (pageId === 'page-timeline') activeTab.value = 'timeline'
   if (pageId === 'page-venue') activeTab.value = 'venue'
+  if (pageId === 'page-gallery') activeTab.value = 'gallery'
 
   const el = document.getElementById(pageId)
   if (el) {
@@ -950,6 +1171,7 @@ function submitWish() {
 }
 
 const addToCalendar = handleSaveDate
+let scrollObserver = null
 
 onMounted(async () => {
   processTransparentImage(rawMonogramUrl)
@@ -970,12 +1192,56 @@ onMounted(async () => {
   } catch (err) {
     console.error('Error generating map QR code:', err)
   }
+
+  // Smooth Scroll & Active Nav Spy
+  const sectionMap = [
+    { id: 'page-invite', tab: 'invite' },
+    { id: 'page-countdown', tab: 'countdown' },
+    { id: 'page-timeline', tab: 'timeline' },
+    { id: 'page-venue', tab: 'venue' },
+    { id: 'page-gallery', tab: 'gallery' },
+    { id: 'page-gratitude', tab: 'gallery' }
+  ]
+
+  scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const found = sectionMap.find(s => s.id === entry.target.id)
+        if (found && !showWishesModal.value) {
+          activeTab.value = found.tab
+        }
+      }
+    })
+  }, { threshold: 0.45 })
+
+  sectionMap.forEach(s => {
+    const el = document.getElementById(s.id)
+    if (el) scrollObserver.observe(el)
+  })
+
+  // Scroll-Driven Fade-In & Fade-Out Observer for Photos
+  const photoFadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+        entry.target.classList.remove('is-hidden')
+      } else {
+        entry.target.classList.remove('is-visible')
+        entry.target.classList.add('is-hidden')
+      }
+    })
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' })
+
+  document.querySelectorAll('.scroll-fade-item').forEach(el => {
+    photoFadeObserver.observe(el)
+  })
 })
 
 onUnmounted(() => {
   if (timer) clearInterval(timer)
   if (melodyTimer) clearInterval(melodyTimer)
   if (audioCtx) audioCtx.close()
+  if (scrollObserver) scrollObserver.disconnect()
 })
 </script>
 
@@ -1722,8 +1988,15 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
   width: 100%;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3), 0 0 20px rgba(212, 175, 55, 0.25);
   border: 2px solid rgba(212, 175, 55, 0.7);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: frameAuraPulse 6s infinite ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.35), 0 0 30px rgba(212, 175, 55, 0.5);
+  }
 
   .photo-glow {
     position: absolute;
@@ -1738,7 +2011,19 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
     height: auto;
     display: block;
     object-fit: cover;
+    transition: transform 0.6s ease;
+    animation: gentleBreathingPortrait 10s infinite ease-in-out alternate;
   }
+}
+
+@keyframes frameAuraPulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(15, 23, 42, 0.3), 0 0 16px rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 14px 34px rgba(15, 23, 42, 0.32), 0 0 28px rgba(212, 175, 55, 0.45); }
+}
+
+@keyframes gentleBreathingPortrait {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.035); }
 }
 
 /* ========================================================
@@ -2237,6 +2522,584 @@ $khmer-body-font: 'Kantumruy Pro', 'Battambang', sans-serif;
 .modal-fade-enter-from, .modal-fade-leave-to {
   opacity: 0;
   transform: scale(0.94);
+}
+
+/* ========================================================
+   PAGE 5: PHOTO GALLERY (Exact Match to Reference UI)
+   ======================================================== */
+.section-gallery-page {
+  justify-content: flex-start;
+}
+
+.gallery-page-inner {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14vh 14px 20px 14px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @media (max-height: 750px) {
+    padding-top: 11vh;
+  }
+
+  @media (max-height: 650px) {
+    padding-top: 9vh;
+  }
+}
+
+.gallery-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 366px;
+  margin: 0 auto 8px auto;
+  padding-left: 4px;
+  box-sizing: border-box;
+}
+
+.gallery-title-kh-en {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  color: #15325b;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.98), 0 0 14px rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.95));
+
+  .kh-part {
+    font-family: $khmer-title-font;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+    color: #15325b;
+  }
+
+  .slash-sep {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #15325b;
+    margin: 0 2px;
+  }
+
+  .en-part {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #15325b;
+  }
+}
+
+.gallery-grid-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 366px;
+}
+
+.gallery-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+  animation: photoCardEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &.hero-card { animation-delay: 0.08s; }
+  &.delay-1 { animation-delay: 0.16s; }
+  &.delay-2 { animation-delay: 0.24s; }
+  &.delay-3 { animation-delay: 0.32s; }
+  &.delay-4 { animation-delay: 0.38s; }
+  &.delay-5 { animation-delay: 0.44s; }
+  &.delay-6 { animation-delay: 0.50s; }
+  &.delay-7 { animation-delay: 0.56s; }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.025);
+    z-index: 5;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@keyframes photoCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.photo-card-frame, .photo-arch-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2.2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(15, 35, 70, 0.12);
+  box-sizing: border-box;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+
+  .gallery-card:hover & {
+    border-color: #ffffff;
+    box-shadow: 0 10px 26px rgba(21, 50, 91, 0.22), 0 0 16px rgba(212, 175, 55, 0.35);
+  }
+}
+
+.photo-card-frame {
+  border-radius: 12px;
+}
+
+.photo-arch-frame {
+  border-radius: 60px 60px 10px 10px;
+
+  &.monochrome-tone img {
+    filter: contrast(1.05) brightness(0.98);
+  }
+}
+
+.photo-card-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.35) 45%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.35) 55%,
+    transparent 75%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+  z-index: 2;
+  animation: photoSheenSweep 7s infinite ease-in-out;
+}
+
+.gallery-card.delay-1 .photo-card-sheen { animation-delay: 0.8s; }
+.gallery-card.delay-2 .photo-card-sheen { animation-delay: 1.6s; }
+.gallery-card.delay-3 .photo-card-sheen { animation-delay: 2.4s; }
+.gallery-card.delay-4 .photo-card-sheen { animation-delay: 3.2s; }
+.gallery-card.delay-5 .photo-card-sheen { animation-delay: 4.0s; }
+.gallery-card.delay-6 .photo-card-sheen { animation-delay: 4.8s; }
+.gallery-card.delay-7 .photo-card-sheen { animation-delay: 5.6s; }
+
+@keyframes photoSheenSweep {
+  0%, 70% { transform: translateX(-150%); }
+  100% { transform: translateX(160%); }
+}
+
+.gallery-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+
+  .gallery-card:hover & {
+    transform: scale(1.07);
+    filter: brightness(1.03);
+  }
+}
+
+.gallery-card.hero-card .gallery-photo-img {
+  animation: subtleLivingZoom 14s infinite ease-in-out alternate;
+}
+
+@keyframes subtleLivingZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.045); }
+}
+
+/* Row 1: Hero Card */
+.gallery-card.hero-card .photo-card-frame {
+  height: 185px;
+
+  @media (max-height: 700px) {
+    height: 165px;
+  }
+}
+
+/* Row 2: 2-Columns */
+.gallery-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+
+  .photo-card-frame {
+    height: 105px;
+
+    @media (max-height: 700px) {
+      height: 95px;
+    }
+  }
+}
+
+/* Row 3: 3-Columns Portrait */
+.gallery-row-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+
+  .photo-card-frame {
+    height: 120px;
+
+    @media (max-height: 700px) {
+      height: 105px;
+    }
+  }
+}
+
+/* Row 4: 2-Columns Arch */
+.gallery-row-arch-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+
+  .photo-arch-frame {
+    height: 125px;
+
+    @media (max-height: 700px) {
+      height: 110px;
+    }
+  }
+}
+
+/* Scroll Fade-In and Fade-Out Animation System */
+.scroll-fade-item {
+  opacity: 0.15;
+  transform: translateY(24px) scale(0.96);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+
+  &.is-hidden {
+    opacity: 0.2;
+    transform: translateY(-16px) scale(0.96);
+    filter: blur(1px);
+  }
+}
+
+/* Photo Card Badge */
+.photo-card-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  background: rgba(21, 50, 91, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #fef08a;
+  font-family: $khmer-body-font;
+  font-size: 0.68rem;
+  font-weight: 600;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  .sparkle-icon {
+    color: #fde047;
+    animation: gentlePulse 2s infinite ease-in-out;
+  }
+}
+
+/* Memory Reel Section */
+.gallery-reel-section {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.reel-header-badge {
+  text-align: center;
+  margin-bottom: 6px;
+
+  .reel-label-kh {
+    font-family: $khmer-body-font;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #15325b;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(21, 50, 91, 0.15);
+    display: inline-block;
+  }
+}
+
+.gallery-horizontal-reel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 8px 2px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.reel-card {
+  flex: 0 0 110px;
+  height: 125px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 35, 70, 0.12);
+  cursor: pointer;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.reel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========================================================
+   PAGE 6: OUR GRATITUDE (សេចក្តីថ្លែងអំណរគុណ - Exact Match)
+   ======================================================== */
+.section-gratitude-page {
+  justify-content: center;
+}
+
+.gratitude-page-inner {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 16vh 20px 24px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 auto;
+
+  @media (max-height: 750px) {
+    padding-top: 13vh;
+  }
+
+  @media (max-height: 650px) {
+    padding-top: 10vh;
+  }
+}
+
+.gratitude-card-glass {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 24px 20px 22px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(15, 35, 70, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: photoCardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gratitude-top-emblem {
+  margin-bottom: 6px;
+
+  .emblem-sparkle {
+    font-size: 1rem;
+    color: #c29a4b;
+    filter: drop-shadow(0 0 4px rgba(254, 240, 138, 0.8));
+    animation: gentlePulse 2.5s infinite ease-in-out;
+  }
+}
+
+.gratitude-title-kh {
+  font-family: $khmer-title-font;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #15325b;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 380px) {
+    font-size: 1.2rem;
+  }
+}
+
+.gratitude-text-p1, .gratitude-text-p2 {
+  font-family: $khmer-body-font;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #15325b;
+  line-height: 1.8;
+  margin: 0 0 14px 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+
+  strong {
+    font-weight: 700;
+    color: #0f2b52;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+}
+
+.gratitude-thanks-line {
+  font-family: $khmer-title-font;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #15325b;
+  margin: 8px 0 14px 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+}
+
+.gratitude-filigree-divider {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px auto 8px auto;
+}
+
+.gratitude-divider-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gratitude-subtitle-en {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  color: #15325b;
+  margin: 4px 0 0 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+
+  @media (max-width: 380px) {
+    font-size: 0.95rem;
+    letter-spacing: 2.5px;
+  }
+}
+
+.gratitude-bottom-spacer {
+  height: 70px;
+  width: 100%;
+}
+
+/* ========================================================
+   LIGHTBOX MODAL
+   ======================================================== */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  cursor: zoom-out;
+}
+
+.lightbox-content-box {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+}
+
+.lightbox-zoom-img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption {
+  font-family: $khmer-title-font;
+  font-size: 0.96rem;
+  color: #ffffff;
+  margin-top: 10px;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-zoom-enter-active, .lightbox-zoom-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-zoom-enter-from, .lightbox-zoom-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
 }
 
 /* ========================================================
