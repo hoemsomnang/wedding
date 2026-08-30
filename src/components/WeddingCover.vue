@@ -468,58 +468,72 @@ function handleOpenInvitation() {
 }
 
 .top-cover-spacer {
-  height: 22vh;
+  height: 15vh;
   width: 100%;
 
   @media (max-height: 700px) {
-    height: 18vh;
+    height: 12vh;
   }
 
   @media (max-height: 600px) {
-    height: 15vh;
+    height: 10vh;
   }
 }
 
-/* Titles Section (Positioned down in the open sky matching Page 2) */
+/* Titles Section (Positioned gracefully in the open bright sky) */
 .titles-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-top: 0;
   padding: 0 16px;
   width: 100%;
 }
 
 .main-title {
-  font-family: 'Moul', 'Bayon', 'Koulen', serif;
-  font-size: 1.55rem;
+  font-family: 'Moul', 'Moulpali', 'Bayon', serif;
+  font-size: 1.62rem;
   font-weight: 400;
-  line-height: 1.4;
-  color: #15325b;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9));
+  line-height: 1.45;
+  color: #0d2b59;
+  letter-spacing: 0.6px;
+  text-align: center;
+  text-shadow: 
+    0 1px 0 #ffffff,
+    0 -1px 0 #ffffff,
+    1px 0 0 #ffffff,
+    -1px 0 0 #ffffff,
+    0 2px 10px rgba(13, 43, 89, 0.28),
+    0 0 16px rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
   transform: translateZ(0);
 
   @media (max-width: 380px) {
-    font-size: 1.35rem;
+    font-size: 1.38rem;
   }
 }
 
 .sub-title {
-  font-family: 'Moul', 'Bayon', 'Koulen', serif;
-  font-size: 1.15rem;
+  font-family: 'Moul', 'Moulpali', 'Bayon', serif;
+  font-size: 1.16rem;
   font-weight: 400;
   line-height: 1.4;
-  color: #15325b;
-  letter-spacing: 0.3px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 8px rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.9));
+  color: #173d75;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 
+    0 1px 0 #ffffff,
+    0 -1px 0 #ffffff,
+    1px 0 0 #ffffff,
+    -1px 0 0 #ffffff,
+    0 2px 8px rgba(15, 45, 90, 0.22),
+    0 0 12px rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.95));
   transform: translateZ(0);
 
   @media (max-width: 380px) {
-    font-size: 1.02rem;
+    font-size: 1.05rem;
   }
 }
 

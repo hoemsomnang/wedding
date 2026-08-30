@@ -23,6 +23,14 @@
         <div class="bird-stardust"></div>
       </div>
     </div>
+
+    <!-- Bird 4: Graceful Mid-Sky Glider -->
+    <div class="bird-container bird-container--4">
+      <div class="bird bird--fast">
+        <LottieBluebird :speed="1.25" :flipForward="true" />
+        <div class="bird-stardust"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,54 +60,35 @@ $stardust-blue: rgba(147, 197, 253, 0.6);
   z-index: 25;
 }
 
-// Bird Containers (Flight Trajectories with Staggered Delays for Continuous Sky Flight)
+// Bird Containers with Hardware Accelerated GPU 3D Keyframe Flight
 .bird-container {
   position: absolute;
   left: -15%;
-  transform: scale(0) translateX(-10vw);
   will-change: transform, opacity;
   pointer-events: none;
 
   &--1 {
-    top: 20%;
-    animation: flight-curve-1 10.5s linear infinite;
+    top: 15%;
+    animation: flight-curve-1 11s linear infinite;
     animation-delay: 0s;
   }
 
   &--2 {
-    top: 28%;
-    animation: flight-curve-2 11.5s linear infinite;
-    animation-delay: 1.2s;
+    top: 24%;
+    animation: flight-curve-2 12s linear infinite;
+    animation-delay: 2.2s;
   }
 
   &--3 {
     top: 10%;
-    animation: flight-curve-3 12.5s linear infinite;
-    animation-delay: 3s;
+    animation: flight-curve-3 13s linear infinite;
+    animation-delay: 5s;
   }
 
   &--4 {
-    top: 38%;
-    animation: flight-curve-4 9.5s linear infinite;
-    animation-delay: 4.8s;
-  }
-
-  &--5 {
-    top: 18%;
-    animation: flight-curve-1 11s linear infinite;
-    animation-delay: 6.5s;
-  }
-
-  &--6 {
-    top: 48%;
-    animation: flight-curve-2 13s linear infinite;
-    animation-delay: 8s;
-  }
-
-  &--7 {
-    top: 14%;
-    animation: flight-curve-3 10.8s linear infinite;
-    animation-delay: 9.6s;
+    top: 32%;
+    animation: flight-curve-4 10s linear infinite;
+    animation-delay: 7.5s;
   }
 }
 

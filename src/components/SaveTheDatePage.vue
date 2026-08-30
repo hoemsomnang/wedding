@@ -16,6 +16,9 @@
       <!-- Subtle Floating Petals & Sparkle Atmosphere -->
       <ParticleEffects />
 
+      <!-- Flying Vector Bluebirds Layer (wedding_bluebird.svg across all pages) -->
+      <BirdFlockEffect />
+
       <!-- Top Right Floating Audio Toggle Button -->
       <div class="top-audio-bar">
         <button
@@ -921,6 +924,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import QRCode from 'qrcode'
 import ParticleEffects from './ParticleEffects.vue'
+import BirdFlockEffect from './BirdFlockEffect.vue'
 import rawMonogramUrl from '../assets/sapphire_m_crest_pure.jpg'
 import invitationBgUrl from '../assets/background2.jpg'
 import couplePhotoUrl from '../assets/couple_portrait.jpg'
