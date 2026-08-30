@@ -70,7 +70,7 @@
               <div class="parent-col right-col">
                 <div class="parent-row">
                   <span class="role-text">លោក</span>
-                  <span class="name-text">ខន សារេត</span>
+                  <span class="name-text">ឃន សារេត</span>
                 </div>
                 <div class="parent-row">
                   <span class="role-text">លោកស្រី</span>
@@ -99,7 +99,7 @@
               </div>
               <div class="couple-col bride-col">
                 <span class="couple-role">កូនស្រីនាម</span>
-                <h2 class="couple-name">ខន សារ៉េន</h2>
+                <h2 class="couple-name">ឃន សារ៉េន</h2>
               </div>
             </div>
 
