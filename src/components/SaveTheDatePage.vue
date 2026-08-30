@@ -70,11 +70,11 @@
               <div class="parent-col right-col">
                 <div class="parent-row">
                   <span class="role-text">លោក</span>
-                  <span class="name-text">ឃន សារេត</span>
+                  <span class="name-text">ឃន សារ៉េត</span>
                 </div>
                 <div class="parent-row">
                   <span class="role-text">លោកស្រី</span>
-                  <span class="name-text">ធៀ ម៉ុំ</span>
+                  <span class="name-text">ធា ម៉ុំ</span>
                 </div>
               </div>
             </div>
@@ -233,35 +233,32 @@
                 </svg>
               </div>
 
-              <h3 class="countdown-sub-en">EVENT COUNTDOWN</h3>
-
               <!-- 4 Live Countdown Cards -->
               <div class="countdown-counter-grid">
                 <div class="countdown-card">
                   <span class="num-text">{{ countdown.days }}</span>
-                  <span class="label-text">ថ្ងៃ (Days)</span>
+                  <span class="label-text">ថ្ងៃ</span>
                 </div>
                 <span class="counter-colon">:</span>
                 <div class="countdown-card">
                   <span class="num-text">{{ countdown.hours }}</span>
-                  <span class="label-text">ម៉ោង (Hours)</span>
+                  <span class="label-text">ម៉ោង</span>
                 </div>
                 <span class="counter-colon">:</span>
                 <div class="countdown-card">
                   <span class="num-text">{{ countdown.minutes }}</span>
-                  <span class="label-text">នាទី (Mins)</span>
+                  <span class="label-text">នាទី</span>
                 </div>
                 <span class="counter-colon">:</span>
                 <div class="countdown-card">
                   <span class="num-text">{{ countdown.seconds }}</span>
-                  <span class="label-text">វិនាទី (Secs)</span>
+                  <span class="label-text">វិនាទី</span>
                 </div>
               </div>
             </div>
 
             <!-- Congratulations Title & Romantic Couple Photo -->
             <div class="couple-photo-showcase">
-              <h2 class="congratulations-title">Congratulations</h2>
               <p class="congratulations-kh">សូមអបអរសាទរគូស្វាមីភរិយាថ្មី</p>
               
               <div class="photo-frame-royal">
@@ -629,7 +626,6 @@
 
                 <!-- Plaque Text -->
                 <span class="btn-khmer-lbl">ចុចមើលទីតាំង</span>
-                <span class="btn-en-lbl">Click to View Location</span>
                 <div class="btn-gold-shimmer"></div>
               </button>
             </div>
@@ -646,14 +642,21 @@
         <section class="snap-page section-gallery-page" id="page-gallery">
           <div class="gallery-page-inner">
             
-            <!-- Gallery Header with Left Leader Line -->
+            <!-- Centered Royal Gallery Header with Gold Filigree Wings -->
             <div class="gallery-page-header">
-              <span class="header-left-line"></span>
-              <h2 class="gallery-title-kh-en">
-                <span class="kh-part">វិចិត្រសាល</span>
-                <span class="slash-sep">/</span>
-                <span class="en-part">PHOTO GALLERY</span>
-              </h2>
+              <div class="gallery-title-badge">
+                <div class="filigree-wing left">
+                  <span class="sparkle-diamond">❖</span>
+                  <span class="flourish-line"></span>
+                </div>
+                <h2 class="gallery-title-kh-en">
+                  <span class="kh-part">វិចិត្រសាល</span>
+                </h2>
+                <div class="filigree-wing right">
+                  <span class="flourish-line"></span>
+                  <span class="sparkle-diamond">❖</span>
+                </div>
+              </div>
             </div>
 
             <!-- Gallery Collage Grid with Scroll Fade-In & Fade-Out -->
@@ -2696,18 +2699,32 @@ $khmer-script-font: 'Bokor', cursive;
 .gallery-page-header {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
+  justify-content: center;
   width: 100%;
-  max-width: 366px;
-  margin: 0 auto 8px auto;
-  padding-left: 4px;
+  max-width: 380px;
+  margin: 0 auto 12px auto;
+  text-align: center;
   box-sizing: border-box;
 }
 
+.gallery-title-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 4px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 16px rgba(21, 50, 91, 0.08);
+}
+
 .gallery-title-kh-en {
-  display: flex;
-  align-items: baseline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 6px;
   margin: 0;
   color: #15325b;
@@ -2716,11 +2733,12 @@ $khmer-script-font: 'Bokor', cursive;
 
   .kh-part {
     font-family: $khmer-title-font;
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: 0.5px;
     color: #15325b;
+    text-align: center;
   }
 
   .slash-sep {

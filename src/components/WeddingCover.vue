@@ -56,7 +56,6 @@
             <!-- Inner Double Border & Text -->
             <div class="btn-inner-border">
               <span class="btn-text-km">សូមចុចបើកសំបុត្រ</span>
-              <span class="btn-text-en">Click to Open The Invitation</span>
             </div>
 
             <!-- Light shimmer animation -->
